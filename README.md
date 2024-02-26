@@ -1,2 +1,2 @@
-# Practicas_-SMM
+# Practicas_SMM
 Paint en Java con Netbeans
