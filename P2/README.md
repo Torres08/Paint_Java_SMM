@@ -1,3 +1,5 @@
+# P2 - Interfaces de usuario en JAVA (Swing)
+
 El objetivo de esta práctica es probar los distintos elementos que ofrece la Swing para el
 diseño de interfaces gráficas de usuario (componentes, contenedores, manejadores de disposición, menús, etc.). Para ello, usaremos el entorno NetBeans y las herramientas visuales que ofrece
 
@@ -51,7 +53,7 @@ Un contenedor es un objeto que puede contener a otros componentes. Un contenedor
 	 - Usamos los Swing Menus de la paleta de netbeas
 
 
-### Extra: Practica 4 GUI
+## Extra: Practica 4 GUI
 Realiza el siguiente diseño:
 ![Texto Alternativo](Imagenes/2024-03-02_18-24.png)
 
