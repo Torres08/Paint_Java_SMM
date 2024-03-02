@@ -26,6 +26,28 @@ public class AplicacionAula {
         beatriz.pregunta("¿Es lo mismo clase y objeto?");
         jesus.responderPregunta("¿Es lo mismo clase y objeto?");
         jesus.pregunta("¿Os habeis enterado?");
+        
+        
+        // P1
+        
+        // 1. Crea un vector de 10 delegados 
+        Delegado[] delegado = new Delegado[10];
+        for (int i = 0; i < 10; ++i){
+            delegado[i] = new Delegado("Delegado" + (i+1) );
+        }
+        
+        // 2. probar el modificador static 
+        System.out.println("Numero total de delegados: " + Delegado.getContadorDelegados());
+    
+        // 3. protecciones
+        // No se puede acceder directamente a nombre y edad desde fuera de la clase Alumno
+        Delegado delegado2 = new Delegado("Juan");
+        // System.out.println(delegado.nombre); // recuerda que esta protegido
+        System.out.println(delegado2.getNombre());
+    
+        // lo mismo llamar a delegado2 que al mismo Delegado para static
+        System.out.println("Numero total de delegados: " + delegado2.getContadorDelegados());
+
     }
 
 }

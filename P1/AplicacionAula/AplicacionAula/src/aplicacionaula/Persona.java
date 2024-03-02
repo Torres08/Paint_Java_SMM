@@ -3,9 +3,12 @@ package aplicacionaula;
 public class Persona {
 
   // Variables
-  public String nombre;
+  //public String nombre;
+  protected String nombre;
+  protected int edad;
+  
   public float peso;
-  public int edad;
+  // public int edad;
   protected  float altura;
 
   // Metodos
@@ -23,6 +26,10 @@ public class Persona {
    altura=0.0F;
   }
 
+  public String getNombre(){
+      return this.nombre;
+  }
+  
   public void habla(){
     System.out.println(nombre+" esta hablando");
   }
