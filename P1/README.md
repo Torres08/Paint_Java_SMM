@@ -1,4 +1,6 @@
-## 1. Ejemplo Aula 
+# P1 - Fundamentos Java
+
+## Ejemplo Aula 
 
 - [x] prueba los elementos fundamentales de todo lenguaje PDO:
 	- Clases y objetos
@@ -18,7 +20,7 @@ Pasos
 3. delegado tiene una variable $static$ contadorDelegados
 4. Cambio en Persona que nombre y edad sean protected, ahora sin un getNOmbre o getEdad no puedo acceder a dichas variables 
 
-# 2. Ejercicio usando el paquete java.lang
+## Ejercicio usando el paquete java.lang
 
 Crea un nuevo proyecto "CuestionesBasicas" y usando las clases de paquete java.lang resuelve las siguientes cuestiones:
 
