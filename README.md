@@ -1,5 +1,5 @@
 # Practicas_SMM
 Paint en Java con Netbeans
 
-### 1. Fundamentos Java
-### 2. Interfaces de usuario en JAVA (Swing)
+### P1 - Fundamentos Java
+### P2 - Interfaces de usuario en JAVA (Swing)
