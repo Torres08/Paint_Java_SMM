@@ -20,7 +20,11 @@ Pasos
 3. delegado tiene una variable $static$ contadorDelegados
 4. Cambio en Persona que nombre y edad sean protected, ahora sin un getNOmbre o getEdad no puedo acceder a dichas variables 
 
+<<<<<<< HEAD
 ## Ejercicio usando el paquete java.lang
+=======
+# Ejercicio usando el paquete java.lang
+>>>>>>> ae81597 (Practica 3 finalizada)
 
 Crea un nuevo proyecto "CuestionesBasicas" y usando las clases de paquete java.lang resuelve las siguientes cuestiones:
 

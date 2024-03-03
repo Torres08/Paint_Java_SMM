@@ -27,6 +27,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoFormas = new javax.swing.ButtonGroup();
+        grupoColores = new javax.swing.ButtonGroup();
         lienzo = new javax.swing.JPanel();
         barraHerramientas = new javax.swing.JToolBar();
         botonPunto = new javax.swing.JToggleButton();
@@ -46,20 +47,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonRelleno = new javax.swing.JCheckBox();
         menuBarra = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        menuNuevo = new javax.swing.JMenuItem();
+        menuAbrir = new javax.swing.JMenuItem();
+        menuGuardar = new javax.swing.JMenuItem();
+        Separador1 = new javax.swing.JPopupMenu.Separator();
+        menuImprimir = new javax.swing.JMenu();
+        menuImpresora = new javax.swing.JMenuItem();
+        menuFichero = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        menuCopiar = new javax.swing.JMenuItem();
+        menuCortar = new javax.swing.JMenuItem();
+        menuPegar = new javax.swing.JMenuItem();
         menuVer = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        botonBarraEstado = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,6 +123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         botonColor1.setBackground(new java.awt.Color(0, 0, 0));
+        grupoColores.add(botonColor1);
         botonColor1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor1.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -134,6 +135,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.add(botonColor1);
 
         botonColor2.setBackground(java.awt.Color.green);
+        grupoColores.add(botonColor2);
         botonColor2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor2.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -145,6 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.add(botonColor2);
 
         botonColor3.setBackground(java.awt.Color.blue);
+        grupoColores.add(botonColor3);
         botonColor3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor3.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor3.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -156,6 +159,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.add(botonColor3);
 
         botonColor4.setBackground(java.awt.Color.white);
+        grupoColores.add(botonColor4);
         botonColor4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor4.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor4.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -167,6 +171,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.add(botonColor4);
 
         botonColor5.setBackground(java.awt.Color.yellow);
+        grupoColores.add(botonColor5);
         botonColor5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor5.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor5.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -178,6 +183,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelColores.add(botonColor5);
 
         botonColor6.setBackground(java.awt.Color.red);
+        grupoColores.add(botonColor6);
         botonColor6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor6.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor6.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -200,67 +206,66 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivo");
 
-        jMenuItem1.setText("Nuevo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuNuevo.setText("Nuevo");
+        menuNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuNuevoActionPerformed(evt);
             }
         });
-        menuArchivo.add(jMenuItem1);
+        menuArchivo.add(menuNuevo);
 
-        jMenuItem2.setText("Abrir");
-        menuArchivo.add(jMenuItem2);
+        menuAbrir.setText("Abrir");
+        menuArchivo.add(menuAbrir);
 
-        jMenuItem3.setText("Guardar");
-        menuArchivo.add(jMenuItem3);
-        menuArchivo.add(jSeparator1);
-        menuArchivo.add(jSeparator2);
+        menuGuardar.setText("Guardar");
+        menuArchivo.add(menuGuardar);
+        menuArchivo.add(Separador1);
 
-        jMenu6.setText("Imprimir");
+        menuImprimir.setText("Imprimir");
 
-        jMenuItem4.setText("Impresora");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuImpresora.setText("Impresora");
+        menuImpresora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuImpresoraActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem4);
+        menuImprimir.add(menuImpresora);
 
-        jMenuItem5.setText("Fichero");
-        jMenu6.add(jMenuItem5);
+        menuFichero.setText("Fichero");
+        menuImprimir.add(menuFichero);
 
-        menuArchivo.add(jMenu6);
+        menuArchivo.add(menuImprimir);
 
         menuBarra.add(menuArchivo);
 
         menuEditar.setText("Editar");
 
-        jMenuItem6.setText("Copiar");
-        menuEditar.add(jMenuItem6);
+        menuCopiar.setText("Copiar");
+        menuEditar.add(menuCopiar);
 
-        jMenuItem7.setText("Cortar");
-        menuEditar.add(jMenuItem7);
+        menuCortar.setText("Cortar");
+        menuEditar.add(menuCortar);
 
-        jMenuItem8.setText("Pegar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        menuPegar.setText("Pegar");
+        menuPegar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                menuPegarActionPerformed(evt);
             }
         });
-        menuEditar.add(jMenuItem8);
+        menuEditar.add(menuPegar);
 
         menuBarra.add(menuEditar);
 
         menuVer.setText("Ver");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Barra de estado");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        botonBarraEstado.setSelected(true);
+        botonBarraEstado.setText("Barra de estado");
+        botonBarraEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
+                botonBarraEstadoActionPerformed(evt);
             }
         });
-        menuVer.add(jCheckBoxMenuItem1);
+        menuVer.add(botonBarraEstado);
 
         menuBarra.add(menuVer);
 
@@ -269,21 +274,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuNuevoActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImpresoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuImpresoraActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void menuPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPegarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_menuPegarActionPerformed
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void botonBarraEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBarraEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    }//GEN-LAST:event_botonBarraEstadoActionPerformed
 
     private void botonColor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor1ActionPerformed
         //this.lienzo.setColor(this.botonColor1.getBackground());
@@ -313,7 +318,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BarraEstado;
+    private javax.swing.JPopupMenu.Separator Separador1;
     private javax.swing.JToolBar barraHerramientas;
+    private javax.swing.JCheckBoxMenuItem botonBarraEstado;
     private javax.swing.JToggleButton botonColor1;
     private javax.swing.JToggleButton botonColor2;
     private javax.swing.JToggleButton botonColor3;
@@ -325,23 +332,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonPunto;
     private javax.swing.JToggleButton botonRectangulo;
     private javax.swing.JCheckBox botonRelleno;
+    private javax.swing.ButtonGroup grupoColores;
     private javax.swing.ButtonGroup grupoFormas;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPanel lienzo;
+    private javax.swing.JMenuItem menuAbrir;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenuBar menuBarra;
+    private javax.swing.JMenuItem menuCopiar;
+    private javax.swing.JMenuItem menuCortar;
     private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenuItem menuFichero;
+    private javax.swing.JMenuItem menuGuardar;
+    private javax.swing.JMenuItem menuImpresora;
+    private javax.swing.JMenu menuImprimir;
+    private javax.swing.JMenuItem menuNuevo;
+    private javax.swing.JMenuItem menuPegar;
     private javax.swing.JMenu menuVer;
     private javax.swing.JPanel panelColores;
     private javax.swing.JPanel panelInferior;
