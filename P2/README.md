@@ -56,14 +56,8 @@ Un contenedor es un objeto que puede contener a otros componentes. Un contenedor
 ## Extra: Practica 4 GUI
 Realiza el siguiente diseño:
 ![Texto Alternativo](Imagenes/2024-03-02_18-24.png)
-<<<<<<< HEAD
 
 Aquí dejo el árbol de componentes resultante, cualquier duda consultar el mismo proyecto:
 ![Texto Alternativo](Imagenes/2024-03-02_19-55.png)
-=======
 
-
-Aquí dejo el árbol de componentes resultante, cualquier duda consultar el mismo proyecto:
-![Texto Alternativo](Imagenes/2024-03-02_18-24.png)
->>>>>>> ae81597 (Practica 3 finalizada)
 
