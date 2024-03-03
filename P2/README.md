@@ -29,10 +29,6 @@ Un contenedor es un objeto que puede contener a otros componentes. Un contenedor
 
 ## Menus
 ![Texto Alternativo](Imagenes/2024-03-02_18-33.png)
-<<<<<<< HEAD
-=======
-## Practica 
->>>>>>> ae81597 (Practica 3 finalizada)
 
 ## Practica 
 
