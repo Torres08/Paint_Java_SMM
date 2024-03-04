@@ -22,19 +22,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     // override al paint
+    @Override
     public void paint(Graphics g){
-       super.paint(g);
+       // 0. sobrecarga
+        super.paint(g);
 
         // 1. Dibujar puntos
         g.setColor(Color.BLUE);
         for (Point punto : puntos) {
-            g.fillOval(punto.x - 5, punto.y - 5, 10, 10); 
+            g.fillOval(punto.x - 5 , punto.y - 5 , 10, 10); 
         }
 
         // 2. Dibujar línea mientras se arrastra el ratón
         if (puntoInicial != null && puntoFinal != null) {
             g.setColor(Color.RED);
-            g.drawLine(puntoInicial.x, puntoInicial.y, puntoFinal.x, puntoFinal.y);    
+            g.drawLine(puntoInicial.x, puntoInicial.y, puntoFinal.x, puntoFinal.y); 
+            
+            /*
+                int x = Math.min(puntoInicial.x, puntoFinal.x);
+                int y = Math.min(puntoInicial.y, puntoFinal.y);
+                int ancho = Math.abs(puntoFinal.x - puntoInicial.x);
+                int alto = Math.abs(puntoFinal.y - puntoInicial.y);
+            
+                // Dibuja un óvalo utilizando el ancho definido por los puntos iniciales y finales
+                g.drawOval(x, y, ancho, alto);
+            */
         }
         
             
@@ -89,7 +101,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         puntoInicial = new Point(evt.getX(), evt.getY());
         puntos.add(puntoInicial);
-        repaint(); 
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged

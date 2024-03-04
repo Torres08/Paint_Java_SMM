@@ -35,17 +35,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(formListener);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(new java.awt.FlowLayout());
 
         Botón.setText("Boton 1");
         Botón.addMouseMotionListener(formListener);
         Botón.addMouseListener(formListener);
-        getContentPane().add(Botón, new java.awt.GridBagConstraints());
+        getContentPane().add(Botón);
 
         Boton2.setText("Boton 2");
         Boton2.addMouseListener(formListener);
         Boton2.addActionListener(formListener);
-        getContentPane().add(Boton2, new java.awt.GridBagConstraints());
+        getContentPane().add(Boton2);
 
         pack();
     }
@@ -61,11 +61,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         public void mouseClicked(java.awt.event.MouseEvent evt) {
-            if (evt.getSource() == Botón) {
-                VentanaPrincipal.this.BotónMouseClicked(evt);
-            }
-            else if (evt.getSource() == VentanaPrincipal.this) {
+            if (evt.getSource() == VentanaPrincipal.this) {
                 VentanaPrincipal.this.formMouseClicked(evt);
+            }
+            else if (evt.getSource() == Botón) {
+                VentanaPrincipal.this.BotónMouseClicked(evt);
             }
             else if (evt.getSource() == Boton2) {
                 VentanaPrincipal.this.Boton2MouseClicked(evt);
@@ -125,7 +125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton2MouseClicked
 
     private void Boton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton2ActionPerformed
-        getContentPane().setBackground(new Color(148, 0, 211));
+        getContentPane().setBackground(new Color(148, 0, 0));
     }//GEN-LAST:event_Boton2ActionPerformed
 
     
