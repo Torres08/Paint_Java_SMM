@@ -1,8 +1,21 @@
+package paintbasico;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package paintbasico;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Shape;
+import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
+import static paintbasico.Forma.ELIPSE;
+import static paintbasico.Forma.LINEA;
+import static paintbasico.Forma.RECTANGULO;
 
 /**
  *
@@ -16,7 +29,44 @@ public class Lienzo extends javax.swing.JPanel {
     public Lienzo() {
         initComponents();
     }
+    
+    // variables
+    Shape forma = new Line2D.Float(0,0,0,0); // por defecto es una linea en el 0
+    Forma TipoForma = Forma.LINEA; // para estudiar los distintos casos
+    Color color = Color.BLACK; // por defecto el negro
+    
+    // punto final e inicial?
+    
+    // override al paint
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);        
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setPaint(color);
+        g2d.draw(forma);
+        
+    }
+    
+    // gets & setters
+    public Color getColor() {
+        return color;
+    }
 
+    public void setColor(Color color) {
+        System.out.println("Cambio color a " + color);
+        this.color = color;
+    } 
+    
+    public Shape getForma() {
+        return forma;
+    }
+    
+    public void setForma(Forma forma) {
+        System.out.println("Cambio forma a " + forma);
+        this.TipoForma = forma;
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,6 +75,15 @@ public class Lienzo extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -37,6 +96,46 @@ public class Lienzo extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        
+        // estudiar varios casos segun Forma enum 
+        switch(TipoForma){  
+            case LINEA: {
+                forma = new Line2D.Float(evt.getPoint(), evt.getPoint());
+                break;
+            }
+            case RECTANGULO: {
+                forma = new Rectangle2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
+                break;
+            }
+            case ELIPSE: {
+                
+            }
+        }
+        
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        // dibuja la linea + repaint
+        ((Line2D)forma).setLine(((Line2D)forma).getP1(), evt.getPoint());
+        
+        switch(TipoForma){  
+            case LINEA: {
+                forma = new Line2D.Float(evt.getPoint(), evt.getPoint());
+                break;
+            }
+            case RECTANGULO: {
+                forma = new Rectangle2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
+                break;
+            }
+            case ELIPSE: {
+                
+            }
+        }
+        
+	this.repaint();
+    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,7 @@
  */
 package paintbasico;
 
+import java.awt.Color;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -19,6 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         grupoFormas = new javax.swing.ButtonGroup();
         grupoColores = new javax.swing.ButtonGroup();
+        paintBasico1 = new paintbasico.PaintBasico();
         barraHerramientas = new javax.swing.JToolBar();
         botonLinea = new javax.swing.JToggleButton();
         botonRectangulo = new javax.swing.JToggleButton();
@@ -46,7 +49,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonColor5 = new javax.swing.JToggleButton();
         botonColor6 = new javax.swing.JToggleButton();
         botonRelleno = new javax.swing.JCheckBox();
-        lienzo1 = new paintbasico.Lienzo();
+        lienzo = new paintbasico.Lienzo();
         menuBarra = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         menuNuevo = new javax.swing.JMenuItem();
@@ -66,6 +69,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonLinea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonLinea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonLinea.addMouseListener(formListener);
+        botonLinea.addActionListener(formListener);
         barraHerramientas.add(botonLinea);
 
         grupoFormas.add(botonRectangulo);
@@ -74,6 +78,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonRectangulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonRectangulo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonRectangulo.addMouseListener(formListener);
+        botonRectangulo.addActionListener(formListener);
         barraHerramientas.add(botonRectangulo);
 
         grupoFormas.add(botonOvalo);
@@ -82,6 +87,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonOvalo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonOvalo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonOvalo.addMouseListener(formListener);
+        botonOvalo.addActionListener(formListener);
         barraHerramientas.add(botonOvalo);
 
         getContentPane().add(barraHerramientas, java.awt.BorderLayout.PAGE_START);
@@ -100,6 +106,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         botonColor1.setBackground(new java.awt.Color(0, 0, 0));
         grupoColores.add(botonColor1);
+        botonColor1.setSelected(true);
         botonColor1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor1.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -156,20 +163,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(panelInferior, java.awt.BorderLayout.PAGE_END);
 
-        lienzo1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout lienzo1Layout = new javax.swing.GroupLayout(lienzo1);
-        lienzo1.setLayout(lienzo1Layout);
-        lienzo1Layout.setHorizontalGroup(
-            lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout lienzoLayout = new javax.swing.GroupLayout(lienzo);
+        lienzo.setLayout(lienzoLayout);
+        lienzoLayout.setHorizontalGroup(
+            lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 746, Short.MAX_VALUE)
         );
-        lienzo1Layout.setVerticalGroup(
-            lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lienzoLayout.setVerticalGroup(
+            lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 412, Short.MAX_VALUE)
         );
 
-        getContentPane().add(lienzo1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(lienzo, java.awt.BorderLayout.CENTER);
 
         menuArchivo.setText("Archivo");
 
@@ -222,6 +227,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             else if (evt.getSource() == menuAbrir) {
                 VentanaPrincipal.this.menuAbrirActionPerformed(evt);
             }
+            else if (evt.getSource() == botonLinea) {
+                VentanaPrincipal.this.botonLineaActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonRectangulo) {
+                VentanaPrincipal.this.botonRectanguloActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonOvalo) {
+                VentanaPrincipal.this.botonOvaloActionPerformed(evt);
+            }
         }
 
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,42 +271,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuNuevoActionPerformed
 
     private void botonColor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor1ActionPerformed
-        //this.lienzo.setColor(this.botonColor1.getBackground());
+        System.out.println("Color Negro");
+       // this.lienzo.setColor(Color.BLACK);
     }//GEN-LAST:event_botonColor1ActionPerformed
 
     private void botonColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor2ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Color Verde");
+       // this.lienzo.setColor(Color.GREEN);
     }//GEN-LAST:event_botonColor2ActionPerformed
 
     private void botonColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor3ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Color Azul");
+       // this.lienzo.setColor(Color.BLUE);
     }//GEN-LAST:event_botonColor3ActionPerformed
 
     private void botonColor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor4ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Color Blanco");
+       // this.lienzo.setColor(Color.WHITE);
     }//GEN-LAST:event_botonColor4ActionPerformed
 
     private void botonColor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor5ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Color Amarillo");
+        //this.lienzo.setColor(Color.YELLOW);
     }//GEN-LAST:event_botonColor5ActionPerformed
 
     private void botonColor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor6ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Color Rojo");
+       // this.lienzo.setColor(Color.RED);
     }//GEN-LAST:event_botonColor6ActionPerformed
 
     private void botonLineaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLineaMouseClicked
         // TODO add your handling code here:
-        System.out.println("Dibujo lineas");
     }//GEN-LAST:event_botonLineaMouseClicked
 
     private void botonRectanguloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRectanguloMouseClicked
         // TODO add your handling code here:
-        System.out.println("Dibujo Rectangulos");
     }//GEN-LAST:event_botonRectanguloMouseClicked
 
     private void botonOvaloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonOvaloMouseClicked
         // TODO add your handling code here:
         System.out.println("Dibujo Ovalos");
+        
     }//GEN-LAST:event_botonOvaloMouseClicked
 
     private void menuAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAbrirMouseClicked
@@ -309,6 +328,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 //Código
         }
     }//GEN-LAST:event_menuAbrirActionPerformed
+
+    private void botonLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLineaActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Dibujo lineas");
+        this.lienzo.setForma(Forma.LINEA);
+    }//GEN-LAST:event_botonLineaActionPerformed
+
+    private void botonRectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRectanguloActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Dibujo Rectangulos");
+        this.lienzo.setForma(Forma.RECTANGULO);
+    }//GEN-LAST:event_botonRectanguloActionPerformed
+
+    private void botonOvaloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOvaloActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Dibujo OVALO");
+        this.lienzo.setForma(Forma.ELIPSE);
+    }//GEN-LAST:event_botonOvaloActionPerformed
 
     
 
@@ -328,12 +365,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox botonRelleno;
     private javax.swing.ButtonGroup grupoColores;
     private javax.swing.ButtonGroup grupoFormas;
-    private paintbasico.Lienzo lienzo1;
+    private paintbasico.Lienzo lienzo;
     private javax.swing.JMenuItem menuAbrir;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenuItem menuGuardar;
     private javax.swing.JMenuItem menuNuevo;
+    private paintbasico.PaintBasico paintBasico1;
     private javax.swing.JPanel panelColores;
     private javax.swing.JPanel panelInferior;
     private javax.swing.JPanel panelOpcionesInferior;

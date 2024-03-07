@@ -6,6 +6,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="grupoColores">
     </Component>
+    <Component class="paintbasico.PaintBasico" name="paintBasico1">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBarra">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuArchivo">
@@ -91,6 +93,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonLineaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonLineaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="botonRectangulo">
@@ -107,6 +110,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonRectanguloMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRectanguloActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="botonOvalo">
@@ -123,6 +127,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonOvaloMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonOvaloActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -185,6 +190,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="grupoColores"/>
                     </Property>
+                    <Property name="selected" type="boolean" value="true"/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                       <Insets value="[0, 0, 0, 0]"/>
@@ -309,12 +315,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="paintbasico.Lienzo" name="lienzo1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
+    <Container class="paintbasico.Lienzo" name="lienzo">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Center"/>
