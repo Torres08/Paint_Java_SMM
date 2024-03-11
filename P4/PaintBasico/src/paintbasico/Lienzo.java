@@ -9,10 +9,13 @@ package paintbasico;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.List;
 import java.awt.Point;
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 import static paintbasico.Forma.ELIPSE;
 import static paintbasico.Forma.LINEA;
 import static paintbasico.Forma.RECTANGULO;
@@ -29,11 +32,13 @@ public class Lienzo extends javax.swing.JPanel {
     public Lienzo() {
         initComponents();
     }
-    
     // variables
-    Shape forma = new Line2D.Float(0,0,0,0); // por defecto es una linea en el 0
-    Forma TipoForma = Forma.LINEA; // para estudiar los distintos casos
-    Color color = Color.BLACK; // por defecto el negro
+     private Shape forma = new Line2D.Float(0,0,0,0); // por defecto es una linea en el 0, 70 70 200
+    //List<Shape> vShape = new ArrayList<>();
+    private Forma TipoForma = Forma.LINEA; // para estudiar los distintos casos
+    private Color color = Color.BLACK; // por defecto el negro
+    private Boolean relleno = false;
+    private Point puntoInicial = null;
     
     // punto final e inicial?
     
@@ -43,7 +48,18 @@ public class Lienzo extends javax.swing.JPanel {
         super.paint(g);        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setPaint(color);
+        
+        // bolean para relleno 
+        if (relleno)
+            g2d.fill(forma); 
+        
         g2d.draw(forma);
+        
+        /*
+        for(Shape s:vShape){
+             g2d.draw(s);
+        }
+        */
         
     }
     
@@ -67,6 +83,14 @@ public class Lienzo extends javax.swing.JPanel {
 
     }
     
+    public Boolean getRelleno() {
+        return relleno;
+    }
+
+    public void setRelleno(Boolean relleno) {
+        this.relleno = relleno;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,12 +100,14 @@ public class Lienzo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                formMouseReleased(evt);
             }
         });
 
@@ -99,43 +125,51 @@ public class Lienzo extends javax.swing.JPanel {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         
+        // System.out.println("Pressed");
         // estudiar varios casos segun Forma enum 
+        // Shape forma
+        
+        puntoInicial = evt.getPoint();
+      
         switch(TipoForma){  
-            case LINEA: {
+            case LINEA ->  {
                 forma = new Line2D.Float(evt.getPoint(), evt.getPoint());
-                break;
             }
-            case RECTANGULO: {
+            case RECTANGULO ->  {
                 forma = new Rectangle2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
-                break;
             }
-            case ELIPSE: {
-                
+            case ELIPSE -> {
+                forma = new Ellipse2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
             }
         }
+        
+        //vShape.add(linea);
         
     }//GEN-LAST:event_formMousePressed
 
-    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        // dibuja la linea + repaint
-        ((Line2D)forma).setLine(((Line2D)forma).getP1(), evt.getPoint());
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        //linea.setLine(linea.getP1(), evt.getPoint());
+        // System.out.println("Dragged");
+        // if del getclass forma.instanceof 
+        // if (forma instanceof Line2D
         
-        switch(TipoForma){  
-            case LINEA: {
-                forma = new Line2D.Float(evt.getPoint(), evt.getPoint());
-                break;
-            }
-            case RECTANGULO: {
-                forma = new Rectangle2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
-                break;
-            }
-            case ELIPSE: {
-                
-            }
+        // almacenar punto mejor
+        
+        if (forma instanceof Line2D linea) {
+             linea.setLine(puntoInicial, evt.getPoint());
+        } else if (forma instanceof Rectangle2D rectangulo) {
+            rectangulo.setFrameFromDiagonal(puntoInicial.x, puntoInicial.y, evt.getPoint().x, evt.getPoint().y);
+        } else if (forma instanceof Ellipse2D elipse) {
+            elipse.setFrameFromDiagonal(puntoInicial.x, puntoInicial.y, evt.getPoint().x, evt.getPoint().y);
         }
+
         
-	this.repaint();
-    }//GEN-LAST:event_formMouseReleased
+        
+
+        this.repaint();
+        
+    }//GEN-LAST:event_formMouseDragged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

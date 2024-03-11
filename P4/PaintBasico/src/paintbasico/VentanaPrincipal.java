@@ -100,9 +100,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BarraEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelInferior.add(BarraEstado, java.awt.BorderLayout.CENTER);
 
-        panelOpcionesInferior.setLayout(new java.awt.GridLayout(1, 0));
+        panelOpcionesInferior.setLayout(new java.awt.BorderLayout());
 
-        panelColores.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        panelColores.setPreferredSize(new java.awt.Dimension(80, 50));
+        panelColores.setLayout(new java.awt.GridLayout(2, 3));
 
         botonColor1.setBackground(new java.awt.Color(0, 0, 0));
         grupoColores.add(botonColor1);
@@ -153,11 +154,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonColor6.addActionListener(formListener);
         panelColores.add(botonColor6);
 
-        panelOpcionesInferior.add(panelColores);
+        panelOpcionesInferior.add(panelColores, java.awt.BorderLayout.WEST);
 
         botonRelleno.setText("Relleno");
         botonRelleno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        panelOpcionesInferior.add(botonRelleno);
+        botonRelleno.addActionListener(formListener);
+        panelOpcionesInferior.add(botonRelleno, java.awt.BorderLayout.EAST);
 
         panelInferior.add(panelOpcionesInferior, java.awt.BorderLayout.PAGE_START);
 
@@ -171,7 +173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         lienzoLayout.setVerticalGroup(
             lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+            .addGap(0, 397, Short.MAX_VALUE)
         );
 
         getContentPane().add(lienzo, java.awt.BorderLayout.CENTER);
@@ -188,6 +190,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuArchivo.add(menuAbrir);
 
         menuGuardar.setText("Guardar");
+        menuGuardar.addActionListener(formListener);
         menuArchivo.add(menuGuardar);
         menuArchivo.add(Separador1);
 
@@ -203,7 +206,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private class FormListener implements java.awt.event.ActionListener, java.awt.event.MouseListener {
         FormListener() {}
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            if (evt.getSource() == botonColor1) {
+            if (evt.getSource() == botonLinea) {
+                VentanaPrincipal.this.botonLineaActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonRectangulo) {
+                VentanaPrincipal.this.botonRectanguloActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonOvalo) {
+                VentanaPrincipal.this.botonOvaloActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonColor1) {
                 VentanaPrincipal.this.botonColor1ActionPerformed(evt);
             }
             else if (evt.getSource() == botonColor2) {
@@ -227,14 +239,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             else if (evt.getSource() == menuAbrir) {
                 VentanaPrincipal.this.menuAbrirActionPerformed(evt);
             }
-            else if (evt.getSource() == botonLinea) {
-                VentanaPrincipal.this.botonLineaActionPerformed(evt);
+            else if (evt.getSource() == botonRelleno) {
+                VentanaPrincipal.this.botonRellenoActionPerformed(evt);
             }
-            else if (evt.getSource() == botonRectangulo) {
-                VentanaPrincipal.this.botonRectanguloActionPerformed(evt);
-            }
-            else if (evt.getSource() == botonOvalo) {
-                VentanaPrincipal.this.botonOvaloActionPerformed(evt);
+            else if (evt.getSource() == menuGuardar) {
+                VentanaPrincipal.this.menuGuardarActionPerformed(evt);
             }
         }
 
@@ -268,36 +277,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void menuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoActionPerformed
         // TODO add your handling code here:
+        System.out.println("Nuevo");
     }//GEN-LAST:event_menuNuevoActionPerformed
 
     private void botonColor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor1ActionPerformed
         System.out.println("Color Negro");
-       // this.lienzo.setColor(Color.BLACK);
+        this.lienzo.setColor(Color.BLACK);
     }//GEN-LAST:event_botonColor1ActionPerformed
 
     private void botonColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor2ActionPerformed
         System.out.println("Color Verde");
-       // this.lienzo.setColor(Color.GREEN);
+        this.lienzo.setColor(Color.GREEN);
     }//GEN-LAST:event_botonColor2ActionPerformed
 
     private void botonColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor3ActionPerformed
         System.out.println("Color Azul");
-       // this.lienzo.setColor(Color.BLUE);
+        this.lienzo.setColor(Color.BLUE);
     }//GEN-LAST:event_botonColor3ActionPerformed
 
     private void botonColor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor4ActionPerformed
         System.out.println("Color Blanco");
-       // this.lienzo.setColor(Color.WHITE);
+        this.lienzo.setColor(Color.WHITE);
     }//GEN-LAST:event_botonColor4ActionPerformed
 
     private void botonColor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor5ActionPerformed
         System.out.println("Color Amarillo");
-        //this.lienzo.setColor(Color.YELLOW);
+        this.lienzo.setColor(Color.YELLOW);
     }//GEN-LAST:event_botonColor5ActionPerformed
 
     private void botonColor6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColor6ActionPerformed
         System.out.println("Color Rojo");
-       // this.lienzo.setColor(Color.RED);
+        this.lienzo.setColor(Color.RED);
     }//GEN-LAST:event_botonColor6ActionPerformed
 
     private void botonLineaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonLineaMouseClicked
@@ -309,9 +319,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRectanguloMouseClicked
 
     private void botonOvaloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonOvaloMouseClicked
-        // TODO add your handling code here:
-        System.out.println("Dibujo Ovalos");
-        
+        // TODO add your handling code here:        
     }//GEN-LAST:event_botonOvaloMouseClicked
 
     private void menuAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuAbrirMouseClicked
@@ -343,9 +351,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void botonOvaloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOvaloActionPerformed
         // TODO add your handling code here:
-        System.out.println("Dibujo OVALO");
+        System.out.println("Dibujo Elipse");
         this.lienzo.setForma(Forma.ELIPSE);
     }//GEN-LAST:event_botonOvaloActionPerformed
+
+    private void botonRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRellenoActionPerformed
+        // TODO add your handling code here:
+        this.lienzo.setRelleno(!this.lienzo.getRelleno());
+    }//GEN-LAST:event_botonRellenoActionPerformed
+
+    private void menuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGuardarActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Guardar");
+        JFileChooser dlg = new JFileChooser();
+        int resp = dlg.showSaveDialog(this);
+    }//GEN-LAST:event_menuGuardarActionPerformed
 
     
 
