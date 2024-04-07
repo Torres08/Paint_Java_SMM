@@ -115,7 +115,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Ellipse2D face = new Ellipse2D.Double(startX, startY, width, height);        
         
         //2. eyes wit circles
-        int eyeRadius = 5;
+        int eyeRadius = 10;
         Ellipse2D leftEye = new Ellipse2D.Double(startX + width / 4 - eyeRadius / 2, startY + height / 4 - eyeRadius / 2, eyeRadius, eyeRadius);
         Ellipse2D rightEye = new Ellipse2D.Double(startX + width * 3 / 4 - eyeRadius / 2, startY + height / 4 - eyeRadius / 2, eyeRadius, eyeRadius);
         
@@ -134,9 +134,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         smileyFace.append(mouth, false);
 
         // Draw the smiley face
-        g2d.setColor(Color.YELLOW);
-        g2d.fill(smileyFace);
-        g2d.setColor(Color.BLACK);
+        //g2d.setColor(Color.YELLOW);
+        //g2d.fill(smileyFace);
+        //g2d.setColor(Color.BLACK);
         g2d.draw(smileyFace);
         
         
@@ -158,28 +158,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
          // Define the starting point and dimensions
-        int startX_2 = 470;
-        int startY_2 = 70;
+        // Define the starting point and dimensions
+        int startX_2 = 440;
+        int startY_2 = 50;
         //int width = 130;
         //int height = 130;
 
         // Create shapes for the face, eyes, and mouth
+        
         Ellipse2D face_2 = new Ellipse2D.Double(startX_2, startY_2, width, height);
-        Ellipse2D leftEye_2 = new Ellipse2D.Double(startX_2 + width / 4 - 15, startY_2 + height / 4 - 15, 30, 30);
-        Ellipse2D rightEye_2 = new Ellipse2D.Double(startX_2 + width * 3 / 4 - 15, startY_2 + height / 4 - 15, 30, 30);
-        Arc2D mouth_2 = new Arc2D.Double(startX_2 + width / 4, startY + height / 2, width / 2, height / 3, 180, 180, Arc2D.OPEN);
+        Arc2D mouth_2 = new Arc2D.Double(startX_2 + width / 4, startY_2 + height / 2, width / 2, height / 3, 180, 180, Arc2D.OPEN);
+        Ellipse2D leftEye_2 = new Ellipse2D.Double(startX_2 + width / 4 - eyeRadius / 2, startY_2 + height / 4 - eyeRadius / 2, eyeRadius, eyeRadius);
+        Ellipse2D rightEye_2 = new Ellipse2D.Double(startX_2 + width * 3 / 4 - eyeRadius / 2, startY_2 + height / 4 - eyeRadius / 2, eyeRadius, eyeRadius);
+        
 
         // Combine shapes into a single Area
         Area smileyFace_2 = new Area(face_2);
-        smileyFace_2.add(new Area(leftEye_2));
-        smileyFace_2.add(new Area(rightEye_2));
-        smileyFace_2.add(new Area(mouth_2)); // Subtract the mouth area from the face
+        smileyFace_2.subtract(new Area(leftEye_2));
+        smileyFace_2.subtract(new Area(rightEye_2));
+        smileyFace_2.subtract(new Area(mouth_2)); // Subtract the mouth area from the face
 
         // Draw the smiley face
-        //g2d.setColor(Color.YELLOW);
-        //g2d.fill(smileyFace_2);
+        g2d.setColor(Color.YELLOW);
+        g2d.fill(smileyFace_2);
         g2d.setColor(Color.BLACK);
-        g2d.draw(smileyFace);
+        g2d.draw(smileyFace_2);
+
+
         
         
     }

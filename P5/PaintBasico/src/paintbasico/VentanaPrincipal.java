@@ -48,7 +48,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonColor4 = new javax.swing.JToggleButton();
         botonColor5 = new javax.swing.JToggleButton();
         botonColor6 = new javax.swing.JToggleButton();
-        botonRelleno = new javax.swing.JCheckBox();
+        espacio = new javax.swing.JPanel();
+        botonesAuxiliares = new javax.swing.JPanel();
+        botonRellenar = new javax.swing.JCheckBox();
+        botonMover = new javax.swing.JCheckBox();
         lienzo = new paintbasico.Lienzo();
         menuBarra = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
@@ -100,14 +103,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         BarraEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelInferior.add(BarraEstado, java.awt.BorderLayout.CENTER);
 
-        panelOpcionesInferior.setLayout(new java.awt.BorderLayout());
+        panelOpcionesInferior.setLayout(new javax.swing.BoxLayout(panelOpcionesInferior, javax.swing.BoxLayout.LINE_AXIS));
 
         panelColores.setPreferredSize(new java.awt.Dimension(80, 50));
         panelColores.setLayout(new java.awt.GridLayout(2, 3));
 
         botonColor1.setBackground(new java.awt.Color(0, 0, 0));
         grupoColores.add(botonColor1);
-        botonColor1.setSelected(true);
         botonColor1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         botonColor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         botonColor1.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -154,12 +156,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonColor6.addActionListener(formListener);
         panelColores.add(botonColor6);
 
-        panelOpcionesInferior.add(panelColores, java.awt.BorderLayout.WEST);
+        panelOpcionesInferior.add(panelColores);
 
-        botonRelleno.setText("Relleno");
-        botonRelleno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botonRelleno.addActionListener(formListener);
-        panelOpcionesInferior.add(botonRelleno, java.awt.BorderLayout.EAST);
+        espacio.setLayout(new java.awt.BorderLayout());
+        panelOpcionesInferior.add(espacio);
+
+        botonesAuxiliares.setPreferredSize(new java.awt.Dimension(80, 50));
+        botonesAuxiliares.setLayout(new java.awt.GridLayout(2, 1));
+
+        botonRellenar.setText("Rellenar");
+        botonRellenar.addActionListener(formListener);
+        botonesAuxiliares.add(botonRellenar);
+
+        botonMover.setText("Mover");
+        botonMover.addActionListener(formListener);
+        botonesAuxiliares.add(botonMover);
+
+        panelOpcionesInferior.add(botonesAuxiliares);
 
         panelInferior.add(panelOpcionesInferior, java.awt.BorderLayout.PAGE_START);
 
@@ -173,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         lienzoLayout.setVerticalGroup(
             lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
+            .addGap(0, 393, Short.MAX_VALUE)
         );
 
         getContentPane().add(lienzo, java.awt.BorderLayout.CENTER);
@@ -233,8 +246,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             else if (evt.getSource() == botonColor6) {
                 VentanaPrincipal.this.botonColor6ActionPerformed(evt);
             }
-            else if (evt.getSource() == botonRelleno) {
-                VentanaPrincipal.this.botonRellenoActionPerformed(evt);
+            else if (evt.getSource() == botonRellenar) {
+                VentanaPrincipal.this.botonRellenarActionPerformed(evt);
             }
             else if (evt.getSource() == menuNuevo) {
                 VentanaPrincipal.this.menuNuevoActionPerformed(evt);
@@ -244,6 +257,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             else if (evt.getSource() == menuGuardar) {
                 VentanaPrincipal.this.menuGuardarActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonMover) {
+                VentanaPrincipal.this.botonMoverActionPerformed(evt);
             }
         }
 
@@ -355,17 +371,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.lienzo.setForma(Forma.ELIPSE);
     }//GEN-LAST:event_botonOvaloActionPerformed
 
-    private void botonRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRellenoActionPerformed
-        // TODO add your handling code here:
-        this.lienzo.setRelleno(!this.lienzo.getRelleno());
-    }//GEN-LAST:event_botonRellenoActionPerformed
-
     private void menuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGuardarActionPerformed
         // TODO add your handling code here:
         System.out.println("Guardar");
         JFileChooser dlg = new JFileChooser();
         int resp = dlg.showSaveDialog(this);
     }//GEN-LAST:event_menuGuardarActionPerformed
+
+    private void botonRellenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRellenarActionPerformed
+        // TODO add your handling code here:
+        this.lienzo.setRelleno(!this.lienzo.getRelleno());
+    }//GEN-LAST:event_botonRellenarActionPerformed
+
+    private void botonMoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMoverActionPerformed
+        // TODO add your handling code here:
+        this.lienzo.setMover(!this.lienzo.getMover());
+
+    }//GEN-LAST:event_botonMoverActionPerformed
 
     
 
@@ -380,9 +402,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonColor5;
     private javax.swing.JToggleButton botonColor6;
     private javax.swing.JToggleButton botonLinea;
+    private javax.swing.JCheckBox botonMover;
     private javax.swing.JToggleButton botonOvalo;
     private javax.swing.JToggleButton botonRectangulo;
-    private javax.swing.JCheckBox botonRelleno;
+    private javax.swing.JCheckBox botonRellenar;
+    private javax.swing.JPanel botonesAuxiliares;
+    private javax.swing.JPanel espacio;
     private javax.swing.ButtonGroup grupoColores;
     private javax.swing.ButtonGroup grupoFormas;
     private paintbasico.Lienzo lienzo;
