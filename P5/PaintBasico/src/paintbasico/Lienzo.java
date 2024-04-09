@@ -60,11 +60,8 @@ public class Lienzo extends javax.swing.JPanel {
     // seleccionar la primera figura situada bajo del punto p, usa el contains 
     private Shape figuraSeleccionada(Point2D p){
         for(Shape s:vShape)
-            if (s instanceof Line2D){
-                System.out.println("Lineaaaaa");
-                if(s.contains(p)) return s;
-            } else 
-                if(s.contains(p)) return s;
+            if(s.contains(p)) return s;
+            
         
         return null;
     }
@@ -85,9 +82,6 @@ public class Lienzo extends javax.swing.JPanel {
      private Point puntoInicial = null;
      private boolean mover = false;
      
-
-    
-    
     // punto final e inicial?
     
     // override al paint
@@ -190,7 +184,7 @@ public class Lienzo extends javax.swing.JPanel {
       
         switch(TipoForma){  
             case LINEA ->  {
-                forma = new MiLinea.Float(evt.getPoint(), evt.getPoint());
+                forma = new MiLinea(evt.getPoint(), evt.getPoint());
             }
             case RECTANGULO ->  {
                 forma = new Rectangle2D.Float(evt.getPoint().x, evt.getPoint().y, 0, 0);
@@ -217,7 +211,7 @@ public class Lienzo extends javax.swing.JPanel {
         
         if (mover){
             //Código para el caso del rectángulo
-            System.out.println("Hola " + forma);
+            //System.out.println("Hola " + forma);
             if (forma!=null && forma instanceof Rectangle2D){
                 // System.out.println("Estoy moviendo");
                 //((Rectangle2D)forma).setRect(evt.getPoint().getX(), evt.getPoint().getY(), ((Rectangle2D)forma).getWidth(), ((Rectangle2D)forma).getHeight());
@@ -242,11 +236,6 @@ public class Lienzo extends javax.swing.JPanel {
             
         }
         
-        
-
-        
-        
-
         this.repaint();
         
     }//GEN-LAST:event_formMouseDragged

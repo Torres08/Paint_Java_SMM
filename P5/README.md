@@ -1,5 +1,5 @@
 
-# P4 - Paint Básico
+# P5 Graficos 2D Parte 1
 
 ## Descripción
 Objetivo: Usar los distintos Shapes que ofrece y la ventaja de tener objetos asociados a las formas. Ampliamos la practica 4 para añadirle nuevas funcionalidades.
