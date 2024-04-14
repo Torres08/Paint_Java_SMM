@@ -7,6 +7,7 @@ package formas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
 import java.awt.geom.CubicCurve2D;
@@ -184,9 +185,101 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         g2d.setColor(Color.BLACK);
         g2d.draw(smileyFace_2);
 
+        // dibujar fantasma con area 
+        /*
+        Ellipse2D cabeza = new Ellipse2D.Double(650, 50, 100, 100);
+        Rectangle2D cuerpo = new Rectangle2D.Double(650,100,100,100);
+        
+        Ellipse2D ojoI = new Ellipse2D.Double(650+25,50+35,10,10);
+        Ellipse2D ojoD = new Ellipse2D.Double(650+65,50+35,10,10);
+        
+        Arc2D boca = new Arc2D.Double(650+25, 100, 100/2, 100/3, 180, 180, Arc2D.OPEN);
+           
+        Polygon triangulo1 = new Polygon(new int[]{650, 100+650-50-25, 100+650-50-25}, new int[]{100+100, 100+100, 50+100+25+10}, 3);
+        Polygon triangulo2 = new Polygon(new int[]{650+25, 100+650-50-25+25, 100+650-50-25+25}, new int[]{100+100, 100+100, 50+100+25+10}, 3);
+        Polygon triangulo3 = new Polygon(new int[]{650+25+25, 100+650-50-25+25+25, 100+650-50-25+25+25}, new int[]{100+100, 100+100, 50+100+25+10}, 3);
+        Polygon triangulo4 = new Polygon(new int[]{650+25+25+25, 100+650-50-25+25+25+25, 100+650-50-25+25+25+25}, new int[]{100+100, 100+100, 50+100+25+10}, 3);
+
+
+        Area fantasma = new Area(cabeza);
+        fantasma.add(new Area(cuerpo));
+        fantasma.subtract(new Area(ojoI));
+        fantasma.subtract(new Area(ojoD));
+        fantasma.subtract(new Area(boca));
+        fantasma.subtract(new Area(triangulo1));
+        fantasma.subtract(new Area(triangulo2));
+        fantasma.subtract(new Area(triangulo3));
+        fantasma.subtract(new Area(triangulo4));
+
+        
+        g2d.draw(fantasma);
+        */
+        
+        // Fantasma con area
+        // posicion + tamaño del fantasma
+        int baseX = 650;
+        int baseY = 200;
+
+        int anchoCabeza = 100;
+        int altoCabeza=  100;
+        int posicionCabeza = 50;
+        int altoCuerpo=100;
+        int anchoCuerpo = 100;
+        
+        Ellipse2D cabeza = new Ellipse2D.Double(baseX, baseY, anchoCabeza, altoCabeza);
+        Rectangle2D cuerpo = new Rectangle2D.Double(baseX, baseY + posicionCabeza, anchoCuerpo, altoCuerpo);  
+        
+        
+        // posicion + tamaño de los ojos
+        int ojoOffsetX = 25;
+        int distanciaOjoDerecha = 40;
+        int ojoOffsetY = 35;
+        int anchoOjo = 10;
+        int altoOjo = 10;
+        
+        Ellipse2D ojoI = new Ellipse2D.Double(baseX + ojoOffsetX, baseY + ojoOffsetY, anchoOjo, altoOjo);
+        Ellipse2D ojoD = new Ellipse2D.Double(baseX + ojoOffsetX + distanciaOjoDerecha, baseY + ojoOffsetY, anchoOjo, altoOjo); // 40 como el espacio adicional entre los ojos
+
+        
+        // Coordenadas + tamaño para la boca
+        int bocaOffsetX = 25;
+        int anchoBoca = anchoCabeza / 2;
+        int altoBoca = altoCabeza / 3;
+        int inicioArcoBoca = 180;
+        int extensiónArcoBoca = 180;
+        
+        Arc2D boca = new Arc2D.Double(baseX + bocaOffsetX, baseY + posicionCabeza, anchoBoca, altoBoca, inicioArcoBoca, extensiónArcoBoca, Arc2D.OPEN);
+        
+        
+        // parte baja del fantasma, son 4 triangulos
+        int baseTrianguloX = baseX;
+        int alturaTriangulo = 25 + 10; 
+        int incrementoX = 25; // Incremento en X para cada triángulo
+        int variable1 = 50;
+        
+        int variable2 = 100;
+        
+        Polygon triangulo1 = new Polygon(new int[]{baseTrianguloX, baseTrianguloX + anchoCuerpo - incrementoX - variable1, baseTrianguloX + anchoCuerpo - incrementoX - variable1}, new int[]{baseY+variable2+variable1, baseY+variable2+variable1, baseY + altoCabeza + alturaTriangulo}, 3);
+        Polygon triangulo2 = new Polygon(new int[]{baseTrianguloX + incrementoX, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX}, new int[]{baseY+variable2+variable1, baseY+variable2+variable1, baseY + altoCabeza + alturaTriangulo}, 3);
+        Polygon triangulo3 = new Polygon(new int[]{baseTrianguloX + incrementoX*2, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX*2, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX*2}, new int[]{baseY+variable2+variable1, baseY+variable2+variable1, baseY + altoCabeza + alturaTriangulo}, 3);
+        Polygon triangulo4 = new Polygon(new int[]{baseTrianguloX + incrementoX*3, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX*3, baseTrianguloX + anchoCuerpo - incrementoX - variable1 + incrementoX*3}, new int[]{baseY+variable2+variable1, baseY+variable2+variable1, baseY + altoCabeza + alturaTriangulo}, 3);
 
         
         
+        Area fantasma = new Area(cabeza);
+        fantasma.add(new Area(cuerpo));
+        fantasma.subtract(new Area(ojoI));
+        fantasma.subtract(new Area(ojoD));
+        fantasma.subtract(new Area(boca));
+        fantasma.subtract(new Area(triangulo1));
+        fantasma.subtract(new Area(triangulo2));
+        fantasma.subtract(new Area(triangulo3));
+        fantasma.subtract(new Area(triangulo4));
+
+        
+        //g2d.fill(fantasma);
+        g2d.draw(fantasma);
+        //g2d.draw(triangulo1);
     }
 
     /**

@@ -1,0 +1,272 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package sm.jltr.iu;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Stroke;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
+import sm.jltr.graficos.Atributos;
+import sm.jltr.graficos.Forma;
+import sm.jltr.graficos.MiElipse2D;
+import sm.jltr.graficos.MiFantasma2D;
+import sm.jltr.graficos.MiForma;
+import sm.jltr.graficos.MiLinea2D;
+import sm.jltr.graficos.MiRectangulo2D;
+
+/**
+ * Clase que representa el Lienzo del Paint
+ * @author torres
+ */
+public class Lienzo extends javax.swing.JPanel {
+
+    // lista de las formas dibujadas
+    private List<MiForma> listaFiguras;
+    
+    // estructura de la forma actual
+    private MiForma estructura;
+    
+    // Forma actual que se esta dibujando
+    private Forma forma;
+    
+    // se podria pasar a atributos
+    // private boolean mover;
+    private Atributos atributosActual;
+    
+    // cambia todas las formas, preguntarle al profesor
+    // lo que pasa es que estructura tiene ya atributos
+    // private Atributos atributoActual = new Atributos();
+ 
+    /**
+     * Cronstructor para inicializar lienzo
+     */
+    public Lienzo() {
+        initComponents();
+        
+        atributosActual = new Atributos();
+        this.listaFiguras = new ArrayList();
+        this.forma = Forma.LINEA;
+        
+        
+        //this.setatributoActual().setColor(colorActual) = Color.BLACK;
+        /*
+            this.colorActual = Color.BLACK;
+            this.rellenoActual = false;
+            this.strokeActual = new BasicStroke(1.0f);
+            this.alisadoActual = false;
+            this.transparenciaActual = false;
+        */
+        
+        /*
+        this.getAtributosActual().setColor(Color.BLACK);
+        this.getAtributosActual().setRelleno(false);
+        this.getAtributosActual().setStroke(new BasicStroke(1.0f));
+        this.getAtributosActual().setAlisado(false);
+        this.getAtributosActual().setTransparencia(false);
+        this.getAtributosActual().setMover(false);
+        */
+        
+        this.estructura = new MiLinea2D(new Point2D.Double(0, 0),new Point2D.Double(0, 0),atributosActual );
+        //this.estructura = new MiLinea2D(new Point2D.Double(0, 0),new Point2D.Double(0, 0),colorActual,rellenoActual,alisadoActual,transparenciaActual,strokeActual);
+        
+        //this.puntoInicial=null;
+    }
+    
+    /**
+     * Método de dibujo que sobrescribe el método paint de JPanel y dibuja las formas
+     * @param g El contexto gráfico para dibujar
+     */
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        Graphics2D g2d = (Graphics2D)g;
+        for(MiForma s: listaFiguras) {
+            if (s != null)
+                s.paint(g2d);
+        }
+    }
+
+    /**
+     * Método para determinar la figura seleccionada en función de una posicion
+     * @param p La posicion como putno.
+     * @return La figura seleccionada si existe, null de lo contrario.
+     */
+    private MiForma figuraSeleccionada(Point2D p){
+        for(MiForma s:listaFiguras){
+            System.out.println("Forma seleccionada: " + s);
+            if(s != null && s.contains(p)) return s;
+        }           
+        return null;
+    }
+    
+
+    /**
+     * Obtiene el tipo de forma actual.
+     * @return El tipo de forma actual.
+     */
+    public Forma getForma() {
+        return forma;
+    }
+
+    /**
+     * Establece el tipo de forma actual.
+     * @param forma El tipo de forma a establecer.
+     */
+    public void setForma(Forma forma) {
+        this.forma = forma;
+    }
+
+    /**
+     * Obtiene la estructura/forma actual.
+     * @return La estructura/forma actual.
+     */
+    public MiForma getEstructura() {
+        return estructura;
+    }
+
+    /**
+     * Establece la estructura/forma actual.
+     * @param estructura La estructura/forma a establecer
+     */
+    
+    public void setEstructura(MiForma estructura) {
+        this.estructura = estructura;
+    }
+
+    /**
+     * Obtener los atributos que actualmente estan seleccionados para el lienzo
+     * @return Los atributos actuales
+     */
+    public Atributos getAtributosActual() {
+        return atributosActual;
+    }
+
+    /**
+     * Estableces cambios en los atributos actuales
+     * @param atributosActual Los nuevos atributos a establecer
+     */
+    public void setAtributosActual(Atributos atributosActual) {
+        this.atributosActual = atributosActual;
+    }
+    
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    
+    /**
+     * Cuando se presiona el raton, se selecciona la figura para mover o se inicializa la estructura, luego se añade la estructura al array
+     * @param evt El evento del ratón.
+     */
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        
+        if (this.getAtributosActual().isMover()){ 
+            estructura = figuraSeleccionada(evt.getPoint());
+        } else {
+            //puntoInicial = evt.getPoint();
+            this.atributosActual.setPuntoInicial(evt.getPoint());
+            
+            switch(forma){  
+                case LINEA ->  {
+                    //forma = new MiLinea(evt.getPoint(), evt.getPoint());
+                    // crear una linea
+                    //estructura = new MiLinea2D(evt.getPoint(),evt.getPoint(),colorActual,rellenoActual,alisadoActual,transparenciaActual,strokeActual);
+                    estructura = new MiLinea2D(evt.getPoint(),evt.getPoint(),atributosActual );
+
+                }
+                case RECTANGULO -> {
+                    estructura = new MiRectangulo2D(evt.getPoint(), evt.getPoint(),atributosActual );
+                    //estructura = new MiRectangulo2D(evt.getPoint(), evt.getPoint(),colorActual,rellenoActual,alisadoActual,transparenciaActual,strokeActual);
+                }
+                case ELIPSE -> {
+                    //estructura = new MiElipse2D(evt.getPoint(),evt.getPoint(),colorActual,rellenoActual,alisadoActual,transparenciaActual,strokeActual);
+                    estructura = new MiElipse2D(evt.getPoint(),evt.getPoint(),atributosActual);
+                }
+                case FANTASMA -> {
+                    //estructura = new MiFantasma2D(evt.getPoint(), evt.getPoint(),colorActual,rellenoActual,alisadoActual,transparenciaActual,strokeActual);
+                    estructura = new MiFantasma2D(evt.getPoint(), evt.getPoint(),atributosActual);
+                    this.repaint(); // hag repaint porque no hago dragged
+                }
+            }
+        }
+        
+        listaFiguras.add(estructura); //vshape
+
+    }//GEN-LAST:event_formMousePressed
+
+    /**
+     * En movimiento hace un setlocation para establecer la nueva posicion, si no establece donde termina la figura
+     * @param evt El evento del ratón.
+     */
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        
+        if (this.getAtributosActual().isMover()){ 
+            if (estructura != null && estructura instanceof MiLinea2D) {
+                ((MiLinea2D)estructura).setLocation(evt.getPoint());
+            }
+            else if (estructura != null && estructura instanceof MiRectangulo2D){
+                //((Rectangle2D)forma).setFrame(evt.getPoint().getX(), evt.getPoint().getY(), ((Rectangle2D)forma).getWidth(), ((Rectangle2D)forma).getHeight());
+                ((MiRectangulo2D)estructura).setLocation(evt.getPoint());
+            } else if (estructura != null && estructura instanceof MiElipse2D){
+                ((MiElipse2D)estructura).setLocation(evt.getPoint());
+            } else if (estructura != null && estructura instanceof MiFantasma2D){
+                ((MiFantasma2D)estructura).setLocation(evt.getPoint());
+            }
+               
+              
+        } else { 
+           
+            switch (estructura) {
+                case MiLinea2D linea -> linea.setLine(this.atributosActual.getPuntoInicial(), evt.getPoint());
+                case MiRectangulo2D rectangulo -> rectangulo.setFrameFromDiagonal(this.atributosActual.getPuntoInicial().x, this.atributosActual.getPuntoInicial().y, evt.getPoint().x, evt.getPoint().y);
+                case MiElipse2D elipse -> elipse.setFrameFromDiagonal(this.atributosActual.getPuntoInicial().x, this.atributosActual.getPuntoInicial().y, evt.getPoint().x, evt.getPoint().y);
+                default -> {
+                }
+            }
+                
+        }
+        
+        this.repaint();
+    }//GEN-LAST:event_formMouseDragged
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}
