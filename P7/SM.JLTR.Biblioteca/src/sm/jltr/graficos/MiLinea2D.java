@@ -27,7 +27,7 @@ public class MiLinea2D extends MiForma{
         forma = new Line2D.Double(p1, p2);
         //this.setAtributos(atributosActual); // asi no puedo
        
-        this.getAtributos().setMover(atributosActual.isMover());
+        this.getAtributos().setSeleccionado(atributosActual.isSeleccionado());
         this.getAtributos().setColor(atributosActual.getColor());
         this.getAtributos().setAlisado(atributosActual.isAlisado());
         this.getAtributos().setStroke(atributosActual.getStroke());
@@ -88,6 +88,28 @@ public class MiLinea2D extends MiForma{
     @Override
     public Point2D getLocation() {
         return ((Line2D) forma).getP1(); // devuelvo el primer punto
+    }
+
+    @Override
+    public int getWidth() {
+        // Obtener los puntos inicial y final de la línea
+        Point2D p1 = ((Line2D) forma).getP1();
+        Point2D p2 = ((Line2D) forma).getP2();
+        // Calcular la diferencia en las coordenadas X
+        double diffX = p2.getX() - p1.getX();
+        // Devolver el valor absoluto de la diferencia como el ancho
+        return (int) Math.abs(diffX);
+    }
+
+    @Override
+    public int getHeight() {
+        // Obtener los puntos inicial y final de la línea
+        Point2D p1 = ((Line2D) forma).getP1();
+        Point2D p2 = ((Line2D) forma).getP2();
+        // Calcular la diferencia en las coordenadas Y
+        double diffY = p2.getY() - p1.getY();
+        // Devolver el valor absoluto de la diferencia como la altura
+        return (int) Math.abs(diffY);
     }
 
 }

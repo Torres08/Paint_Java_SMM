@@ -29,7 +29,7 @@ public class MiRectangulo2D extends MiForma{
         
         //this.setAtributos(atributosActual); // asi no puedo
         
-        this.getAtributos().setMover(atributosActual.isMover());
+        this.getAtributos().setSeleccionado(atributosActual.isSeleccionado());
         this.getAtributos().setColor(atributosActual.getColor());
         this.getAtributos().setAlisado(atributosActual.isAlisado());
         this.getAtributos().setStroke(atributosActual.getStroke());
@@ -90,10 +90,26 @@ public class MiRectangulo2D extends MiForma{
 
     @Override
     public Point2D getLocation() {
-        Rectangle2D bounds = ((Rectangle2D) forma).getBounds2D(); // obtener los limites 
-        double x = bounds.getX() + bounds.getWidth() / 2.0;
-        double y = bounds.getY() + bounds.getHeight() / 2.0;
-        return new Point2D.Double(x, y);
+        Rectangle2D bounds = forma.getBounds2D();
+        double x = bounds.getX(); 
+        double y = bounds.getY(); 
+        return new Point2D.Double(x, y); 
+    }
+
+    @Override
+    public int getWidth() {
+        // Obtener el rectángulo que contiene el fantasma
+        Rectangle2D bounds = forma.getBounds2D();
+        // Devolver el ancho del rectángulo
+        return (int) bounds.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        // Obtener el rectángulo que contiene el fantasma
+        Rectangle2D bounds = forma.getBounds2D();
+        // Devolver la altura del rectángulo
+        return (int) bounds.getHeight();
     }
 
 }

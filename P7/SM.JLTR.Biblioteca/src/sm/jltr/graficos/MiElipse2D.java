@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sm.jltr.graficos;
-
-
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -26,7 +24,7 @@ public class MiElipse2D extends MiForma {
         this.forma = new Ellipse2D.Double();
         ((Ellipse2D)forma).setFrameFromDiagonal(p1, p2);
         
-        this.getAtributos().setMover(atributosActual.isMover());
+        this.getAtributos().setSeleccionado(atributosActual.isSeleccionado());
         this.getAtributos().setColor(atributosActual.getColor());
         this.getAtributos().setAlisado(atributosActual.isAlisado());
         this.getAtributos().setStroke(atributosActual.getStroke());
@@ -48,8 +46,8 @@ public class MiElipse2D extends MiForma {
     @Override
     public Point2D getLocation() {
         Rectangle2D frame = ((Ellipse2D)forma).getFrame(); 
-        double x = frame.getX() + frame.getWidth() / 2.0; 
-        double y = frame.getY() + frame.getHeight() / 2.0; 
+        double x = frame.getX();
+        double y = frame.getY(); 
         return new Point2D.Double(x, y); 
     }
 
@@ -82,6 +80,22 @@ public class MiElipse2D extends MiForma {
         double height = maxY - minY;
 
         ((Ellipse2D) forma).setFrame(minX, minY, width, height);
+    }
+
+    @Override
+    public int getWidth() {
+        // Obtener el rectángulo que contiene la elipse
+        Rectangle2D bounds = ((Ellipse2D) forma).getBounds2D();
+        // Devolver el ancho del rectángulo
+        return (int) bounds.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        // Obtener el rectángulo que contiene la elipse
+        Rectangle2D bounds = ((Ellipse2D) forma).getBounds2D();
+        // Devolver la altura del rectángulo
+        return (int) bounds.getHeight();
     }
     
 }

@@ -29,12 +29,12 @@ public class Atributos {
     private boolean alisado;
     private boolean transparencia;
     
-    private boolean mover;
+    private boolean seleccionado;
+    
     private Point puntoInicial;
     
     AlphaComposite comp_sin_tansparencia = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f);
-    RenderingHints antialiasing_sin_alisado = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
-            RenderingHints.VALUE_ANTIALIAS_OFF);
+    RenderingHints antialiasing_sin_alisado = new RenderingHints(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_OFF);
     
     /**
      * Constructor por defecto
@@ -47,9 +47,8 @@ public class Atributos {
         comp = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
         alisado = false;
         transparencia = false;
-        
         puntoInicial = null;
-        mover = false;
+        seleccionado = false;
     }
     
     
@@ -73,7 +72,7 @@ public class Atributos {
         } else {
             g2d.setComposite(comp_sin_tansparencia);
         }
-            
+           
     }
 
     /**
@@ -156,22 +155,6 @@ public class Atributos {
         this.transparencia = transparencia;
     }
 
-    
-     /**
-     * Ve si la forma se puede mover.
-     * @return true si la forma se puede mover, false en caso contrario.
-     */
-    public boolean isMover() {
-        return mover;
-    }
-
-    /**
-     * Establece si se mueve la figura.
-     * @param mover El estado de movimiento a establecer.
-     */
-    public void setMover(boolean mover) {
-        this.mover = mover;
-    }
 
     /**
      * Obtiene el punto inicial para mover la forma.
@@ -189,9 +172,22 @@ public class Atributos {
     public void setPuntoInicial(Point puntoInicial) {
         this.puntoInicial = puntoInicial;
     }
-    
-    
-    
+
+    /**
+    * Devuelve un valor booleano que indica si la forma está seleccionada.
+    * @return true si la forma está seleccionada, false en caso contrario.
+    */
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
+
+    /**
+    * Establece el estado de selección de la forma.
+    * @param seleccionado true para seleccionar la forma, false para deseleccionarla.
+    */
+    public void setSeleccionado(boolean seleccionado) {
+        this.seleccionado = seleccionado;
+    }
     
 
 }

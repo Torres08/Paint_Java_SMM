@@ -4,9 +4,7 @@
  */
 package sm.jltr.graficos;
 
-import java.awt.Color;
 import java.awt.Polygon;
-import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
@@ -32,12 +30,10 @@ public class MiFantasma2D extends MiForma {
      * @param p2 Segundo punto que determina la esquina opuesta de la forma.
     * @param atributosActual Los atributos de estilo a aplicar a la línea.
     */
-
-    
     public MiFantasma2D(Point2D p1, Point2D p2, Atributos atributosActual ){
         this.forma=crearFantasma(p1,p2);
         
-        this.getAtributos().setMover(atributosActual.isMover());
+        this.getAtributos().setSeleccionado(atributosActual.isSeleccionado());
         this.getAtributos().setColor(atributosActual.getColor());
         this.getAtributos().setAlisado(atributosActual.isAlisado());
         this.getAtributos().setStroke(atributosActual.getStroke());
@@ -123,8 +119,8 @@ public class MiFantasma2D extends MiForma {
     @Override
     public Point2D getLocation() {
         Rectangle2D bounds = forma.getBounds2D();
-        double x = bounds.getX() + bounds.getWidth() / 2.0; 
-        double y = bounds.getY() + bounds.getHeight() / 2.0; 
+        double x = bounds.getX(); 
+        double y = bounds.getY(); 
         return new Point2D.Double(x, y); 
     }
 
@@ -154,6 +150,22 @@ public class MiFantasma2D extends MiForma {
      */
     private void transform(AffineTransform transform) {
        forma = transform.createTransformedShape(forma);
+    }
+
+    @Override
+    public int getWidth() {
+        // Obtener el rectángulo que contiene el fantasma
+        Rectangle2D bounds = forma.getBounds2D();
+        // Devolver el ancho del rectángulo
+        return (int) bounds.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        // Obtener el rectángulo que contiene el fantasma
+        Rectangle2D bounds = forma.getBounds2D();
+        // Devolver la altura del rectángulo
+        return (int) bounds.getHeight();
     }
     
 }
