@@ -14,10 +14,15 @@ Paint en Java con Netbeans
 ### P11 - Procesamiento de Imagenes BandCOmbineOp y ColorConvertOp
 
 ### Por hacer
-- Mostrar en la barra de estado el valor (RGB) del pixel sobre el que está situado el ratón.
-- Cuando se seleccione una figura en el lienzo, hacer que los atributos de la ventana principal se activen conforme a los atributos de la figura seleccionad 
-
+- Mostrar en la barra de estado el valor (RGB) del pixel sobre el que está situado el ratón y la posicion en cada lienzo
+- Cuando se seleccione una figura en el lienzo, hacer que los atributos de la ventana principal se activen conforme a los atributos de la figura seleccionada (no se) 
+- pasar imagen YCC de ecualización
 
 ### Solucionar 
 1. Solucionado la funcion calcular kernel cometa + preguntar por bandas + deshacer el cambio
 2. Preguntar al maestro si esta bien aplicado: Transformación lineal con un punto de control reto 10 P10
+3. Volcar imagene lo hace bien pero salta una excepcion
+4. Copia hereda las cosas, por que?
+5. revisar el ultimo reto
+
+### Anotaciones del Maestro
