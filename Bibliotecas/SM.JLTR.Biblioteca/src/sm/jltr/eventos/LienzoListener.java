@@ -14,4 +14,6 @@ import sm.jltr.iu.Lienzo;
 public interface LienzoListener extends EventListener{
     public void shapeAdded(LienzoEvent evt);
     public void shapeSelected(LienzoEvent evt);
+    public void posicion(LienzoEvent evt);
+    public void color(LienzoEvent evt);
 }

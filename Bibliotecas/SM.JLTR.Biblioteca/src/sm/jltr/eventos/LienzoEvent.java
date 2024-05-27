@@ -4,6 +4,7 @@
  */
 package sm.jltr.eventos;
 
+import java.awt.Color;
 import java.awt.Shape;
 import java.util.EventObject;
 import sm.jltr.graficos.MiForma;
@@ -19,14 +20,25 @@ public class LienzoEvent extends EventObject{
     
     //private Shape forma;
     private MiForma forma;
+    int x,y;
     
-    public LienzoEvent(Object source,MiForma forma) {
+    public LienzoEvent(Object source,MiForma forma, int x, int y) {
         super(source);
         this.forma = forma;
+        this.x = x;
+        this.y = y;
     }
 
     public MiForma getForma() {
         return forma;
+    }
+    
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
     
     
