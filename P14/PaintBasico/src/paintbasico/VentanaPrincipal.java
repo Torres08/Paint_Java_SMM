@@ -117,6 +117,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Clase que implementa un manejador para controlar la reproducción de
+     * audio.
+     */
     class ManejadorAudio implements LineListener {
 
         private JButton botonPlay;
@@ -124,6 +128,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         private boolean empezar;
         private int tiempo;
 
+        /**
+         * Constructor de la clase. Inicializa el tiempo a cero.
+         */
         public ManejadorAudio() {
             this.tiempo = 0;
         }
@@ -146,8 +153,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
 
-        // ponerlo a 0 botonTiempo
-        // 
+        /**
+         * Inicia el contador de tiempo para seguir el progreso de la
+         * reproducción.
+         */
         private void startCounter() {
             empezar = true;
             contadorThread = new Thread(() -> {
@@ -168,6 +177,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             contadorThread.start();
         }
 
+        /**
+         * Detiene el contador.
+         */
         private void stopCounter() {
             empezar = false;
             if (contadorThread != null) {
@@ -179,10 +191,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
 
+        /**
+         * Obtiene el tiempo transcurrido.
+         *
+         * @return El tiempo transcurrido en segundos.
+         */
         public int getElapsedTime() {
             return tiempo;
         }
 
+        /**
+         * Reinicia el contador de tiempo a cero.
+         */
         public void resetCounter() {
             tiempo = 0;
         }
@@ -200,8 +220,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Color c1 = Color.RED;
     Color c2 = Color.BLUE;
 
-    //lienzo viene de vi.getLienzo2D()
-    //lienzo. addLienzoListener(manejador);
     /**
      * Constructor de la clase VentanaPrincipal. Inicializa y configura los
      * componentes de la ventana.
@@ -241,7 +259,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonTransparencia = new javax.swing.JToggleButton();
         botonAlisar = new javax.swing.JToggleButton();
         botonGrosor = new javax.swing.JSlider();
-        jSeparator3 = new javax.swing.JToolBar.Separator();
         botonVolcarImagen = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JToolBar.Separator();
         botonPlay = new javax.swing.JButton();
@@ -249,6 +266,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonListaReproduccion = new javax.swing.JComboBox<>();
         botonRecord = new javax.swing.JButton();
         botonTiempo = new javax.swing.JLabel();
+        Separator6 = new javax.swing.JPanel();
+        botonCamara = new javax.swing.JButton();
+        botonCapturar = new javax.swing.JButton();
         panelInferior = new javax.swing.JPanel();
         BarraEstado = new javax.swing.JLabel();
         barraHerramientasInferior = new javax.swing.JToolBar();
@@ -258,16 +278,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Separator1 = new javax.swing.JPanel();
         imagenContraste = new javax.swing.JLabel();
         botonContraste = new javax.swing.JSlider();
-        Separator3 = new javax.swing.JPanel();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        Separator4 = new javax.swing.JPanel();
         ComboBoxFiltros = new javax.swing.JComboBox<>();
         Separator2 = new javax.swing.JPanel();
         imagenCometa = new javax.swing.JLabel();
         botonCometa = new javax.swing.JSlider();
-        Separator6 = new javax.swing.JPanel();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        Separator8 = new javax.swing.JPanel();
         botonContrasteNormal = new javax.swing.JButton();
         botonContrasteIluminado = new javax.swing.JButton();
         botonContrasteOscurecido = new javax.swing.JButton();
@@ -279,21 +295,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Separator9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botonReto = new javax.swing.JSlider();
-        Separator14 = new javax.swing.JPanel();
         jSeparator7 = new javax.swing.JToolBar.Separator();
-        Separator10 = new javax.swing.JPanel();
         botonRotacion180 = new javax.swing.JButton();
         Separator11 = new javax.swing.JPanel();
         botonIncrementarEscalado = new javax.swing.JButton();
         botonReducirEscalado = new javax.swing.JButton();
-        Separator13 = new javax.swing.JPanel();
         jSeparator8 = new javax.swing.JToolBar.Separator();
-        Separator12 = new javax.swing.JPanel();
         botonBandas = new javax.swing.JButton();
         comboBoxEspacioColor = new javax.swing.JComboBox<>();
-        Separator15 = new javax.swing.JPanel();
         jSeparator9 = new javax.swing.JToolBar.Separator();
-        Separator16 = new javax.swing.JPanel();
         botonCombinar = new javax.swing.JButton();
         botonTintado = new javax.swing.JButton();
         botonTintadoSlider = new javax.swing.JSlider();
@@ -387,6 +397,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonDuplicar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonDuplicar.addActionListener(formListener);
         barraHerramientas.add(botonDuplicar);
+
+        jSeparator2.setMaximumSize(new java.awt.Dimension(25, 32767));
         barraHerramientas.add(jSeparator2);
 
         grupoFormas.add(botonLinea);
@@ -433,6 +445,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonMover.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonMover.addActionListener(formListener);
         barraHerramientas.add(botonMover);
+
+        jSeparator1.setMaximumSize(new java.awt.Dimension(25, 32767));
         barraHerramientas.add(jSeparator1);
 
         panelColor.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -503,7 +517,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonGrosor.setPreferredSize(new java.awt.Dimension(50, 25));
         botonGrosor.addChangeListener(formListener);
         barraHerramientas.add(botonGrosor);
-        barraHerramientas.add(jSeparator3);
 
         botonVolcarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/volcado.png"))); // NOI18N
         botonVolcarImagen.setToolTipText("Volcar Imagen");
@@ -512,6 +525,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonVolcarImagen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         botonVolcarImagen.addActionListener(formListener);
         barraHerramientas.add(botonVolcarImagen);
+
+        jSeparator12.setMaximumSize(new java.awt.Dimension(25, 32767));
         barraHerramientas.add(jSeparator12);
 
         botonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/play.png"))); // NOI18N
@@ -542,6 +557,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         botonTiempo.setText("00:00");
         barraHerramientas.add(botonTiempo);
+
+        Separator6.setMaximumSize(new java.awt.Dimension(10, 0));
+        Separator6.setMinimumSize(new java.awt.Dimension(10, 0));
+
+        javax.swing.GroupLayout Separator6Layout = new javax.swing.GroupLayout(Separator6);
+        Separator6.setLayout(Separator6Layout);
+        Separator6Layout.setHorizontalGroup(
+            Separator6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        Separator6Layout.setVerticalGroup(
+            Separator6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        barraHerramientas.add(Separator6);
+
+        botonCamara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Camara.png"))); // NOI18N
+        botonCamara.setFocusable(false);
+        botonCamara.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCamara.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonCamara.addActionListener(formListener);
+        barraHerramientas.add(botonCamara);
+
+        botonCapturar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Capturar.png"))); // NOI18N
+        botonCapturar.setFocusable(false);
+        botonCapturar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonCapturar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botonCapturar.addActionListener(formListener);
+        barraHerramientas.add(botonCapturar);
 
         getContentPane().add(barraHerramientas, java.awt.BorderLayout.PAGE_START);
 
@@ -626,43 +671,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonContraste.addFocusListener(formListener);
         barraHerramientasInferior.add(botonContraste);
 
-        Separator3.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator3.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator3Layout = new javax.swing.GroupLayout(Separator3);
-        Separator3.setLayout(Separator3Layout);
-        Separator3Layout.setHorizontalGroup(
-            Separator3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator3Layout.setVerticalGroup(
-            Separator3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator3);
-
         jSeparator5.setMaximumSize(new java.awt.Dimension(30, 32767));
         jSeparator5.setMinimumSize(new java.awt.Dimension(15, 5));
         jSeparator5.setOpaque(true);
-        jSeparator5.setPreferredSize(new java.awt.Dimension(7, 5));
+        jSeparator5.setPreferredSize(new java.awt.Dimension(25, 5));
         barraHerramientasInferior.add(jSeparator5);
-
-        Separator4.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator4.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator4Layout = new javax.swing.GroupLayout(Separator4);
-        Separator4.setLayout(Separator4Layout);
-        Separator4Layout.setHorizontalGroup(
-            Separator4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator4Layout.setVerticalGroup(
-            Separator4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator4);
 
         ComboBoxFiltros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Media", "Binomial", "Enfoque", "Relieve", "Laplaciano", "Iluminado 3x3", "Iluminado 5x5" }));
         ComboBoxFiltros.setToolTipText("Filtros");
@@ -704,43 +717,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonCometa.addFocusListener(formListener);
         barraHerramientasInferior.add(botonCometa);
 
-        Separator6.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator6.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator6Layout = new javax.swing.GroupLayout(Separator6);
-        Separator6.setLayout(Separator6Layout);
-        Separator6Layout.setHorizontalGroup(
-            Separator6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator6Layout.setVerticalGroup(
-            Separator6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator6);
-
         jSeparator6.setMaximumSize(new java.awt.Dimension(30, 32767));
         jSeparator6.setMinimumSize(new java.awt.Dimension(15, 5));
         jSeparator6.setOpaque(true);
-        jSeparator6.setPreferredSize(new java.awt.Dimension(7, 5));
+        jSeparator6.setPreferredSize(new java.awt.Dimension(25, 5));
         barraHerramientasInferior.add(jSeparator6);
-
-        Separator8.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator8.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator8Layout = new javax.swing.GroupLayout(Separator8);
-        Separator8.setLayout(Separator8Layout);
-        Separator8Layout.setHorizontalGroup(
-            Separator8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator8Layout.setVerticalGroup(
-            Separator8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator8);
 
         botonContrasteNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/contraste2.png"))); // NOI18N
         botonContrasteNormal.setToolTipText("Contraste Normal");
@@ -845,43 +826,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonReto.addFocusListener(formListener);
         barraHerramientasInferior.add(botonReto);
 
-        Separator14.setMaximumSize(new java.awt.Dimension(10, 0));
-        Separator14.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator14Layout = new javax.swing.GroupLayout(Separator14);
-        Separator14.setLayout(Separator14Layout);
-        Separator14Layout.setHorizontalGroup(
-            Separator14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator14Layout.setVerticalGroup(
-            Separator14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator14);
-
         jSeparator7.setMaximumSize(new java.awt.Dimension(30, 32767));
         jSeparator7.setMinimumSize(new java.awt.Dimension(15, 5));
         jSeparator7.setOpaque(true);
-        jSeparator7.setPreferredSize(new java.awt.Dimension(7, 5));
+        jSeparator7.setPreferredSize(new java.awt.Dimension(25, 5));
         barraHerramientasInferior.add(jSeparator7);
-
-        Separator10.setMaximumSize(new java.awt.Dimension(10, 0));
-        Separator10.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator10Layout = new javax.swing.GroupLayout(Separator10);
-        Separator10.setLayout(Separator10Layout);
-        Separator10Layout.setHorizontalGroup(
-            Separator10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator10Layout.setVerticalGroup(
-            Separator10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator10);
 
         botonRotacion180.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/rotar180.png"))); // NOI18N
         botonRotacion180.setToolTipText("Rotar 180");
@@ -923,43 +872,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonReducirEscalado.addActionListener(formListener);
         barraHerramientasInferior.add(botonReducirEscalado);
 
-        Separator13.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator13.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator13Layout = new javax.swing.GroupLayout(Separator13);
-        Separator13.setLayout(Separator13Layout);
-        Separator13Layout.setHorizontalGroup(
-            Separator13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator13Layout.setVerticalGroup(
-            Separator13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator13);
-
         jSeparator8.setMaximumSize(new java.awt.Dimension(30, 32767));
         jSeparator8.setMinimumSize(new java.awt.Dimension(15, 5));
         jSeparator8.setOpaque(true);
-        jSeparator8.setPreferredSize(new java.awt.Dimension(7, 5));
+        jSeparator8.setPreferredSize(new java.awt.Dimension(25, 5));
         barraHerramientasInferior.add(jSeparator8);
-
-        Separator12.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator12.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator12Layout = new javax.swing.GroupLayout(Separator12);
-        Separator12.setLayout(Separator12Layout);
-        Separator12Layout.setHorizontalGroup(
-            Separator12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator12Layout.setVerticalGroup(
-            Separator12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator12);
 
         botonBandas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/bandas.png"))); // NOI18N
         botonBandas.setToolTipText("Bandas");
@@ -974,43 +891,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comboBoxEspacioColor.addActionListener(formListener);
         barraHerramientasInferior.add(comboBoxEspacioColor);
 
-        Separator15.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator15.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator15Layout = new javax.swing.GroupLayout(Separator15);
-        Separator15.setLayout(Separator15Layout);
-        Separator15Layout.setHorizontalGroup(
-            Separator15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator15Layout.setVerticalGroup(
-            Separator15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator15);
-
         jSeparator9.setMaximumSize(new java.awt.Dimension(30, 32767));
         jSeparator9.setMinimumSize(new java.awt.Dimension(15, 5));
         jSeparator9.setOpaque(true);
-        jSeparator9.setPreferredSize(new java.awt.Dimension(7, 5));
+        jSeparator9.setPreferredSize(new java.awt.Dimension(25, 5));
         barraHerramientasInferior.add(jSeparator9);
-
-        Separator16.setMaximumSize(new java.awt.Dimension(10, 1));
-        Separator16.setMinimumSize(new java.awt.Dimension(10, 0));
-
-        javax.swing.GroupLayout Separator16Layout = new javax.swing.GroupLayout(Separator16);
-        Separator16.setLayout(Separator16Layout);
-        Separator16Layout.setHorizontalGroup(
-            Separator16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        Separator16Layout.setVerticalGroup(
-            Separator16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1, Short.MAX_VALUE)
-        );
-
-        barraHerramientasInferior.add(Separator16);
 
         botonCombinar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/combinar.png"))); // NOI18N
         botonCombinar.setToolTipText("Combinar");
@@ -1462,6 +1347,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             else if (evt.getSource() == menuOperadorCambioColor) {
                 VentanaPrincipal.this.menuOperadorCambioColorActionPerformed(evt);
             }
+            else if (evt.getSource() == botonCamara) {
+                VentanaPrincipal.this.botonCamaraActionPerformed(evt);
+            }
+            else if (evt.getSource() == botonCapturar) {
+                VentanaPrincipal.this.botonCapturarActionPerformed(evt);
+            }
         }
 
         public void focusGained(java.awt.event.FocusEvent evt) {
@@ -1648,7 +1539,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if (extension.equalsIgnoreCase("wav") || extension.equalsIgnoreCase("au")) {
                     this.botonListaReproduccion.addItem(f);
                     this.botonListaReproduccion.setSelectedItem(f);
-                } else {
+                } else if (extension.equalsIgnoreCase("mp4") || extension.equalsIgnoreCase("mpg") || extension.equalsIgnoreCase("avi")){
+                    VentanaInternaVideo vc = VentanaInternaVideo.getInstance(f);
+                    escritorio.add(vc);
+                    vc.setVisible(true);
+                
+                }else {
                     // parte de la imagen
                     BufferedImage img = ImageIO.read(f);
                     VentanaInterna vi = new VentanaInterna();
@@ -2490,7 +2386,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
         Esta función es lineal para valores de píxeles por debajo del umbral TT, lo que significa que las zonas oscuras se mantienen iguales. Sin embargo, para valores de píxeles por encima de TT, la función aplica una atenuación exponencial decreciente, lo que resulta en un oscurecimiento de las zonas claras.
      */
-    
     /**
      * Maneja la acción del botón "Oscurecer Zonas Claras". Este método se
      * activa cuando se presiona el botón "Oscurecer Zonas Claras" y aplica un
@@ -2511,7 +2406,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             } else {
                 // Calcular f(x-128)
                 double normalizado = (i - umbral) / (double) (255 - umbral); // divido por el mismo
-                double transformacion = Math.pow(normalizado, gamma) * (255 - umbral) ;
+                double transformacion = Math.pow(normalizado, gamma) * (255 - umbral);
 
                 // Aplicar el factor de escala y el desplazamiento
                 int nuevoValor = (int) (k * transformacion + umbral);
@@ -2881,15 +2776,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     private void botonRetoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_botonRetoStateChanged
 
-        /*
-        int radianes = this.botonRotar.getValue();
-        VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
-        if (vi != null) {
-            //BufferedImage img = vi.getLienzo().getImagen();
-            if (this.imgFuente != null)
-                this.rotarFuncion(radianes,this.imgFuente,vi);
-        }
-         */
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         int a = this.botonReto.getValue();
 
@@ -3198,6 +3084,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_comboBoxEspacioColorActionPerformed
 
+    /**
+     * Maneja el evento de cambio de estado del botón de cambio de color. Cambia
+     * el tono de la imagen mostrada en la ventana interna seleccionada en
+     * función del valor del botón.
+     *
+     * @param evt El evento de cambio que desencadena este método.
+     */
     private void botonCambioColorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_botonCambioColorStateChanged
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
 
@@ -3221,6 +3114,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonCambioColorStateChanged
 
+    /**
+     * Maneja el evento de ganar foco del botón de cambio de color. Inicializa
+     * una nueva instancia de BufferedImage a partir de la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonCambioColorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonCambioColorFocusGained
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         // inicializo la bufferedImage
@@ -3232,6 +3132,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonCambioColorFocusGained
 
+    /**
+     * Maneja el evento de perder foco del botón de cambio de color. Restablece
+     * la imagen fuente a null y establece el valor del botón de posterización
+     * al mínimo.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonCambioColorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonCambioColorFocusLost
         this.imgFuente = null;
         this.botonPosterizacion.setValue(2); // a lo minimo
@@ -3302,6 +3209,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
             - aumenta el contraste usar la imagenPocoContrastada
      */
+    /**
+     * Maneja el evento de acción del botón de ecualización. Aplica la
+     * ecualización de histograma a la imagen mostrada en la ventana interna
+     * seleccionada.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
+
     private void botonEcualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEcualizacionActionPerformed
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
 
@@ -3316,50 +3231,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     EqualizationOp ecualizacion = new EqualizationOp();
                     ecualizacion.filter(img, img);
                     vi.getLienzo().repaint();
-                    // Java por defecto tiende a iluminar en exceso la imagen tras la ecualizacion
-                    //ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_PYCC);
-                    //ColorConvertOp yccConvert = new ColorConvertOp(cs,null);
-                    //BufferedImage yccImage = yccConverter.filter(img,null);
 
-
-                    /*
-                    // 1. Convertir la imagen a YCbCr utilizando YCbCrColorSpace (COnvertir la imagen a YCC)
-                    YCbCrColorSpace ycbcrCS = new YCbCrColorSpace();
-                    ColorConvertOp yccConverter = new ColorConvertOp(ycbcrCS, null);
-                    BufferedImage ycbcrImage = yccConverter.filter(img, null);
-
-                    // 2. Separar las bandas Y, C, Cr
-                    BufferedImage[] bandas = extraerTresBandas(ycbcrImage);
-                    BufferedImage imgY = bandas[0];
-                    BufferedImage imgCb = bandas[1];
-                    BufferedImage imgCr = bandas[2];
-                    
-                    // 3. Aplicar ecualizacion solo para Y
-                    EqualizationOp ecualizacionY = new EqualizationOp();
-                    ecualizacionY.filter(imgY, imgY);  
-                    
-                    // 4. volvemos a combinar las bandas
-                    BufferedImage imgEqualizedYCC = combinarTresBandas(imgY, imgCb, imgCr);
-                    
-                    // 5. Convertimos a RGB
-                    ColorSpace rgb = ColorSpace.getInstance(ColorSpace.CS_sRGB);                    
-                    ColorConvertOp rgbConverter = new ColorConvertOp(ycbcrCS, rgb);
-                    BufferedImage imgRGB = rgbConverter.filter(imgEqualizedYCC, null);
-                     */
-                    // ¿Como paso de ycbcrCS a rgb?
                 } catch (IllegalArgumentException e) {
                     System.err.println(e.getLocalizedMessage());
                 }
             }
         }
 
+        // usando los botones
         // extraer imagen a YCC, extraer 3 bandas y aplicar la ecualizacion solo en el canal Y
         // 1. convierta a YYC yccImage
         // 2. extraer banda Y
 
     }//GEN-LAST:event_botonEcualizacionActionPerformed
 
-    // extraer bandas imagen YCC
+    /**
+     * Extrae las tres bandas (Y, Cb, Cr) de una imagen en formato YCbCr.
+     *
+     * @param yccImage La imagen en formato YCbCr de la cual se extraen las
+     * bandas.
+     * @return Un arreglo de BufferedImage que contiene las tres bandas (Y, Cb,
+     * Cr).
+     */
     public static BufferedImage[] extraerTresBandas(BufferedImage yccImage) {
         // raster es una estructura de datos que representa una cuadricula de pixeles en una imagen
         WritableRaster raster = yccImage.getRaster();
@@ -3384,7 +3277,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return new BufferedImage[]{imgY, imgCb, imgCr};
     }
 
-    // combinar las tres bandas
+    /**
+     * Combina las tres bandas (Y, Cb, Cr) en una única imagen en formato YCbCr.
+     *
+     * @param imgY La imagen de la banda Y.
+     * @param imgCb La imagen de la banda Cb.
+     * @param imgCr La imagen de la banda Cr.
+     * @return Una imagen BufferedImage que contiene las tres bandas combinadas.
+     */
     public static BufferedImage combinarTresBandas(BufferedImage imgY, BufferedImage imgCb, BufferedImage imgCr) {
         int width = imgY.getWidth();
         int height = imgY.getHeight();
@@ -3406,6 +3306,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return imgEqualizedYCC;
     }
 
+    /**
+     * Maneja el evento de cambio de estado del botón de posterización. Aplica
+     * el efecto de posterización a la imagen mostrada en la ventana interna
+     * seleccionada.
+     *
+     * @param evt El evento de cambio que desencadena este método.
+     */
     private void botonPosterizacionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_botonPosterizacionStateChanged
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
 
@@ -3426,7 +3333,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_botonPosterizacionStateChanged
-
+    /**
+     * Maneja el evento de ganar foco del botón de posterización. Inicializa una
+     * nueva instancia de BufferedImage a partir de la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonPosterizacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonPosterizacionFocusGained
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         // inicializo la bufferedImage
@@ -3438,12 +3351,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonPosterizacionFocusGained
 
+    /**
+     * Maneja el evento de perder foco del botón de posterización. Restablece la
+     * imagen fuente a null y establece el valor del botón de posterización al
+     * mínimo.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonPosterizacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonPosterizacionFocusLost
         this.imgFuente = null;
         this.botonPosterizacion.setValue(2); // a lo minimo
         repaint();
     }//GEN-LAST:event_botonPosterizacionFocusLost
 
+    /**
+     * Maneja el evento de acción del menú para aplicar el operador de
+     * posterización. Aplica el operador de posterización a la imagen mostrada
+     * en la ventana interna seleccionada.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void menuOperadorPosterizarOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOperadorPosterizarOpActionPerformed
 
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
@@ -3471,6 +3398,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_labelPosicionRGBMouseMoved
 
+    /**
+     * Maneja el evento de acción del botón para aplicar el filtro rojo. Aplica
+     * el filtro rojo a la imagen mostrada en la ventana interna seleccionada.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonFiltroRojoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFiltroRojoActionPerformed
 
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
@@ -3495,6 +3428,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonFiltroRojoActionPerformed
 
+    /**
+     * Maneja el evento de acción del botón para seleccionar el color C1. Abre
+     * un selector de color para que el usuario elija un color y lo asigna a la
+     * variable c1. Además, actualiza el color de fondo del botón con el color
+     * seleccionado.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonC1ActionPerformed
         c1 = JColorChooser.showDialog(this, "Elije un color", Color.BLUE);
         // tengo que enviar c1
@@ -3505,6 +3446,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonC1ActionPerformed
 
+    /**
+     * Maneja el evento de acción del botón para seleccionar el color C2. Abre
+     * un selector de color para que el usuario elija un color y lo asigna a la
+     * variable c2. Además, actualiza el color de fondo del botón con el color
+     * seleccionado.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonC2ActionPerformed
         c2 = JColorChooser.showDialog(this, "Elije un color", Color.BLUE);
 
@@ -3512,6 +3461,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonC2.setBackground(c2);
     }//GEN-LAST:event_botonC2ActionPerformed
 
+    /**
+     * Maneja el evento de acción del menú para aplicar el operador de cambio de
+     * color. Aplica el operador de cambio de tono a la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void menuOperadorCambioColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOperadorCambioColorActionPerformed
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
 
@@ -3539,6 +3495,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuOperadorCambioColorActionPerformed
 
+    /**
+     * Maneja el evento de cambio de estado del slider para ajustar el tintado
+     * de la imagen. Aplica el efecto de tintado a la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de cambio que desencadena este método.
+     */
     private void botonTintadoSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_botonTintadoSliderStateChanged
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         System.out.println("Valor Contraste: (0.1:2): " + (float) botonTintadoSlider.getValue() / 10.0);
@@ -3558,7 +3521,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_botonTintadoSliderStateChanged
-
+    /**
+     * Maneja el evento de ganar foco del slider de tintado. Inicializa una
+     * nueva instancia de BufferedImage a partir de la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonTintadoSliderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonTintadoSliderFocusGained
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         // inicializo la bufferedImage
@@ -3570,12 +3539,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonTintadoSliderFocusGained
 
+    /**
+     * Maneja el evento de perder foco del slider de tintado. Restablece la
+     * imagen fuente a null, establece el valor del slider de contraste a 1 y
+     * vuelve a pintar el componente para actualizar su apariencia.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonTintadoSliderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonTintadoSliderFocusLost
         imgFuente = null;
         this.botonContraste.setValue(1);
         repaint();
     }//GEN-LAST:event_botonTintadoSliderFocusLost
 
+    /**
+     * Maneja el evento de cambio de estado del slider para ajustar el filtro
+     * rojo. Aplica el filtro rojo a la imagen mostrada en la ventana interna
+     * seleccionada.
+     *
+     * @param evt El evento de cambio que desencadena este método.
+     */
     private void botonFiltroRojoSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_botonFiltroRojoSliderStateChanged
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         System.out.println("Valor FiltroRojo: (2:25): " + (float) botonFiltroRojoSlider.getValue());
@@ -3596,6 +3579,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonFiltroRojoSliderStateChanged
 
+    /**
+     * Maneja el evento de ganar foco del slider para el filtro rojo. Inicializa
+     * una nueva instancia de BufferedImage a partir de la imagen mostrada en la
+     * ventana interna seleccionada.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonFiltroRojoSliderFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonFiltroRojoSliderFocusGained
         VentanaInterna vi = (VentanaInterna) (escritorio.getSelectedFrame());
         // inicializo la bufferedImage
@@ -3607,14 +3597,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonFiltroRojoSliderFocusGained
 
+    /**
+     * Maneja el evento de perder foco del slider para el filtro rojo.
+     * Restablece la imagen fuente a null, establece el valor del slider de
+     * contraste a 2 y vuelve a pintar el componente para actualizar su
+     * apariencia.
+     *
+     * @param evt El evento de foco que desencadena este método.
+     */
     private void botonFiltroRojoSliderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_botonFiltroRojoSliderFocusLost
         imgFuente = null;
         this.botonContraste.setValue(2);
         repaint();
     }//GEN-LAST:event_botonFiltroRojoSliderFocusLost
 
+    /**
+     * Maneja el evento de acción del botón de reproducción. Crea un nuevo
+     * reproductor de audio con el archivo seleccionado en el menú desplegable
+     * de la lista de reproducción. Si se crea correctamente el reproductor, se
+     * añade un LineListener para manejar los eventos de línea y se inicia la
+     * reproducción del audio.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlayActionPerformed
         File f = (File) botonListaReproduccion.getSelectedItem();
+        
+        VentanaInternaVideo vv = (VentanaInternaVideo)escritorio.getSelectedFrame();
+        
+        if (vv != null){
+            botonPlay.setEnabled(false); //
+            vv.play();
+            
+        }
+        
+        
         if (f != null) {
             player = new SMClipPlayer(f);
             if (player != null) {
@@ -3625,8 +3642,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonPlayActionPerformed
 
+    /**
+     * Maneja el evento de acción del botón de pausa. Detiene la reproducción o
+     * la grabación de audio, según corresponda, y restablece los controles de
+     * reproducción/grabación.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPausaActionPerformed
 
+        VentanaInternaVideo vv = (VentanaInternaVideo)escritorio.getSelectedFrame();
+        
+        if (vv != null){
+            player.addLineListener(new ManejadorAudio());
+            botonPlay.setEnabled(false); //
+            vv.stop();
+            
+        }
+        
         System.out.println("Boton Pausa " + recorder);
         if (player != null) {
             player.stop();
@@ -3645,6 +3678,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonPausaActionPerformed
 
+    /**
+     * Maneja el evento de acción del botón de grabación. Abre un diálogo de
+     * selección de archivo para guardar la grabación de audio y comienza la
+     * grabación si se selecciona un archivo válido.
+     *
+     * @param evt El evento de acción que desencadena este método.
+     */
     private void botonRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRecordActionPerformed
         // TODO add your handling code here:
         String proyectoRuta = System.getProperty("user.dir");
@@ -3674,6 +3714,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println("Grabando");
 
     }//GEN-LAST:event_botonRecordActionPerformed
+
+    private void botonCamaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCamaraActionPerformed
+        VentanaInternaCamara vc = VentanaInternaCamara.getInstance();
+        
+        if (vc != null){
+            escritorio.add(vc);
+            vc.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_botonCamaraActionPerformed
+
+    private void botonCapturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCapturarActionPerformed
+        VentanaInternaCamara vc = (VentanaInternaCamara)escritorio.getSelectedFrame();
+        if (vc != null){
+            BufferedImage img = vc.getImagen();
+            VentanaInterna vi = new VentanaInterna(img);
+            escritorio.add(vi);
+            vi.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_botonCapturarActionPerformed
 
     /**
      * Obtiene la banda de color especificada de una imagen y la devuelve como
@@ -3922,22 +3983,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel BarraEstado;
     private javax.swing.JComboBox<String> ComboBoxFiltros;
     private javax.swing.JPanel Separator1;
-    private javax.swing.JPanel Separator10;
     private javax.swing.JPanel Separator11;
-    private javax.swing.JPanel Separator12;
-    private javax.swing.JPanel Separator13;
-    private javax.swing.JPanel Separator14;
-    private javax.swing.JPanel Separator15;
-    private javax.swing.JPanel Separator16;
     private javax.swing.JPanel Separator17;
     private javax.swing.JPanel Separator18;
     private javax.swing.JPanel Separator2;
-    private javax.swing.JPanel Separator3;
-    private javax.swing.JPanel Separator4;
     private javax.swing.JPanel Separator5;
     private javax.swing.JPanel Separator6;
     private javax.swing.JPanel Separator7;
-    private javax.swing.JPanel Separator8;
     private javax.swing.JPanel Separator9;
     private javax.swing.JToolBar barraHerramientas;
     private javax.swing.JToolBar barraHerramientasInferior;
@@ -3947,7 +3999,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSlider botonBrillo;
     private javax.swing.JToggleButton botonC1;
     private javax.swing.JToggleButton botonC2;
+    private javax.swing.JButton botonCamara;
     private javax.swing.JSlider botonCambioColor;
+    private javax.swing.JButton botonCapturar;
     private javax.swing.JToggleButton botonColor;
     private javax.swing.JButton botonCombinar;
     private javax.swing.JSlider botonCometa;
@@ -4003,7 +4057,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JToolBar.Separator jSeparator12;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;

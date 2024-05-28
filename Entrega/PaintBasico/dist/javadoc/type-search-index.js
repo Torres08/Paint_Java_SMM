@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"paintbasico","l":"PaintBasico"},{"p":"paintbasico","l":"VentanaInterna"},{"p":"paintbasico","l":"VentanaInternaCamara"},{"p":"paintbasico","l":"VentanaInternaVideo"},{"p":"paintbasico","l":"VentanaPrincipal"}];updateSearchResults();

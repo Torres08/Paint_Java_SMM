@@ -4,6 +4,8 @@
  */
 package paintbasico;
 
+import uk.co.caprica.vlcj.discovery.NativeDiscovery;
+
 /**
  * Clase principal que inicia la aplicación PaintBasico.
  * @author torres
@@ -40,6 +42,12 @@ public class PaintBasico {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        // P14
+        boolean ok = new NativeDiscovery().discover();
+        if (!ok){
+            System.err.println("VCL no encontrado");
+        }
         
         /* Crear y mostrar el formulario de la aplicación */
         java.awt.EventQueue.invokeLater(new Runnable() {

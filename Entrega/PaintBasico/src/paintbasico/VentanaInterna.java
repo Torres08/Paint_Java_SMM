@@ -6,6 +6,7 @@ package paintbasico;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import sm.jltr.iu.Lienzo;
 
 /**
@@ -27,6 +28,13 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         this.setSize(300,300); // tamaño de inicializacion
         this.setBackground(Color.red); // no le hace caso
     }
+    
+    public VentanaInterna(BufferedImage img) {
+        initComponents();
+        this.setSize(300,300); // tamaño de inicializacion
+        this.setBackground(Color.red); // no le hace caso
+        this.getLienzo().setImagen(img);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +45,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ScrollDerecha = new javax.swing.JScrollBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
         lienzo = new sm.jltr.iu.Lienzo();
 
         setClosable(true);
@@ -62,7 +70,6 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
-        getContentPane().add(ScrollDerecha, java.awt.BorderLayout.LINE_END);
 
         lienzo.setAutoscrolls(true);
         lienzo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -75,14 +82,16 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         lienzo.setLayout(lienzoLayout);
         lienzoLayout.setHorizontalGroup(
             lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         lienzoLayout.setVerticalGroup(
             lienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 320, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(lienzo, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setViewportView(lienzo);
+
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,9 +106,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void lienzoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzoMouseMoved
-        // TODO add your handling code here:
-        //Point posicion = evt.getPoint();
-        //ventanaPrincipal.actualizarPosicionRatonEnLabel((int)posicion.getX(), (int)posicion.getY());
+        
     }//GEN-LAST:event_lienzoMouseMoved
 
     /**
@@ -115,7 +122,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollBar ScrollDerecha;
+    private javax.swing.JScrollPane jScrollPane1;
     private sm.jltr.iu.Lienzo lienzo;
     // End of variables declaration//GEN-END:variables
 }

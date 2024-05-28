@@ -1,82 +1,67 @@
 # Practicas_SMM
-Paint en Java con Netbeans
+**Paint en Java con Netbeans**
+- Torres Ramos, Juan Luis
 
+## Contenidos Realizado
 ### P1 - Fundamentos Java
-### P2 - Interfaces de usuario en JAVA (Swing)
-### P3 - Gestión de eventos en JAVA
-### P4 - Paint Basico
-### P5 - Graficos 2D: Formas Básicas
-### P6 - Graficos 2D: Atributos
+### P2 - Interfaces de Usuario en Java (Swing)
+### P3 - Gestión de Eventos en Java
+### P4 - Paint Básico
+### P5 - Gráficos 2D: Formas Básicas
+### P6 - Gráficos 2D: Atributos
 ### P7 - Paint 2D
-### P8 - E/S Imagenes
-### P9 - Procesamiento de Imagenes RescaleOp COnvolveOp
-### P10 - Procesamiento de Imagenes AffineTransformOp LookupOp
-### P11 - Procesamiento de Imagenes BandCOmbineOp y ColorConvertOp
-
-### Por hacer
-- Mostrar en la barra de estado el valor (RGB) del pixel sobre el que está situado el ratón y la posicion en cada lienzo
-- contador a la hora de reproducir video 
-- Cuando se seleccione una figura en el lienzo, hacer que los atributos de la ventana principal se activen conforme a los atributos de la figura seleccionada (no se) 
-- arreglar la funcion lookup reto, hacerla como pide el maestro
-
-### Solucionar 
-1. Solucionado la funcion calcular kernel cometa + preguntar por bandas + deshacer el cambio (tengo que aplicar mas, corregir la funcion) (distribuir mas los valores) X
-
-2. Preguntar al maestro si esta bien aplicado: Transformación lineal con un punto de control reto 10 P10 (float) (bien hecho)
-X
-
-3. Volcar imagene lo hace bien pero salta una excepcion (cambiarlo para que el iterator sea solo el actual) (solucionado) X
-
-4. Copia hereda las cosas, por que?, // focus gaines, creas copia, arreglar esto , hago una copia, replantear de nuevo
-(hecho, implementar coloen en atributos imagen y moforma)
-X aplicar clone a atributo Miforma y getImage
-
-5. revisar el ultimo reto, revisar slider de rojoOp // umbral pequeño porque es asi se detecta rapido 
+### P8 - Entrada/Salida de Imágenes
+### P9 - Procesamiento de Imágenes: RescaleOp y ConvolveOp
+### P10 - Procesamiento de Imágenes: AffineTransformOp y LookupOp
+### P11 - Procesamiento de Imágenes: BandCombineOp y ColorConvertOp
+### P12 - Procesamiento de Imágenes: Sepia, Ecualización, Tintado, etc.
+### P13 - Sonido
+### P14 - Video (no funciona por problema de compatibilidad de librería) + Webcam
+### Trabajo voluntario de sonido 
 
 
-manejador de eventos para rgb y lienzo, manejador en la ventana principal
-manejador de mouse en la VP
-new para crearla
-asociarla al lienzo
-cuando haces un nuevo o abris hago el lienzo
-addlistener cada vez que creas ventana interna, new, abrir y nuevo 
+## Retos Implementados
 
-### Retos Implementados para repasar
-- P6 "Formas Avanzadas"
-- P8 "marcar figura seleccionada (multiseleccion)" editar atributos figura seleccionada, Volcar Imagen
-- P8 clip de la imagen + rectangulo + botones seacutalizan segun el lienzo seleccionado
-- P8 filtros para guardar imagen tipo archivo jpg bmp png (tamaño de la imagen nueva no implementado)
-- P9 EventoListener (no terminado, a medias si da tiempo terminarlo)
-- P9 emborronamiento iluminado
-- P9 Emborronamiento cometa (por temrinar preguntar al maestro )
-- P9 crear imagen nueva que sea TYPE_INTARGB
-- P9 seleccion figura del lienzo actualice la barra de herramientas (no hecho) (he hecho multiseleccion, por lo que lo puedo complicar)
-- P10 Oscurecer zonas claras
-- P10 transformacion lineal cn un punto de control (Por revisar)
-- P10 operacion negativo
-- P10 operacion duplicar .2x
-- P11 mostrar en la barra de herramientas el valor RGB pixel (lo mismo que la posicion del raton, hecho para el escritorio pero no para el lienzo, por terminar)
-- P12 Reto CAmbio color c1 por c2
-- P12 añadido slider para operacionRojo y tintado
+- **P3:** Ejercicios extra
+- **P6:** Formas avanzadas
+- **P8:**
+  - Marcar figura seleccionada (multiselección)
+  - Editar atributos de figura seleccionada
+  - Volcar imagen
+  - Clip de la imagen + rectángulo + botones se actualizan según el lienzo seleccionado
+  - Filtros para guardar imagen en formatos JPG, BMP, PNG (tamaño de la imagen nueva no implementado)
+- **P9:**
+  - EventoListener (no terminado)
+  - Emborronamiento iluminado
+  - Emborronamiento cometa (por terminar, preguntar al maestro)
+  - Crear imagen nueva que sea TYPE_INT_ARGB
+  - Selección de figura del lienzo actualice la barra de herramientas (no hecho)
+- **P10:**
+  - Oscurecer zonas claras
+  - Transformación lineal con un punto de control (por revisar)
+  - Operación negativo
+  - Operación duplicar x2
+- **P11:** 
+  - Mostrar en la barra de herramientas el valor RGB del píxel (hecho para el escritorio pero no para el lienzo, por terminar)
+- **P12:**
+  - Cambio de color c1 por c2
+  - Añadido slider para operación rojo y tintado
+- **P13:**
+  - Listener para audio, contador de tiempo
+- **Otros**
+  - Listener para lienzo, para agregar figura, mostrar coordenada y color RGB
+  - Listener para audio, contador de tiempo
+  - Código documentado con Javadoc
+  - Copia dura del lienzo, se puede copiar tanto imagen como figuras del lienzo en una nueva 
 
+## Problemas 
 
-# examen
-poca gente no va al examen
-no muy largo, te puedes quedar
-no es dificil si lo entiendes, importante estudiar lo de imagenes, entender lo que entiendes
-proyecto nuevo
-trasnparencia del curso
-lienzo es esencial, el como hacerlo, pintar linea, etc No drawline
+- No puede abrir videos debido a problemas de librerías VCL.
+  - SLF4J: Error al cargar la clase "org.slf4j.impl.StaticLoggerBinder".
+  - SLF4J: Revirtiendo a implementación de logger sin operación (NOP).
+  - SLF4J: Ver [SLF4J StaticLoggerBinder](http://www.slf4j.org/codes.html#StaticLoggerBinder) para más detalles.
+  - VCL no encontrado.
 
-abrir imagen y subir el brillo (jeemplo)
+## Nota
 
-usa este operador y haz convolucion
-
-ver lo que has hecho, 
-
-
-2 ejercicio dibujar
-3 imagenes
-- lookupOP convolucion
-- operacion propia 
-- ejemplo de funciones de clase
+Si es la primera vez que descarga el proyecto, verifique que todas las librerías de la carpeta de biblioteca están asociadas al proyecto.

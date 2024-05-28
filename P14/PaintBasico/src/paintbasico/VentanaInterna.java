@@ -6,6 +6,7 @@ package paintbasico;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import sm.jltr.iu.Lienzo;
 
 /**
@@ -26,6 +27,13 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
         initComponents();
         this.setSize(300,300); // tamaño de inicializacion
         this.setBackground(Color.red); // no le hace caso
+    }
+    
+    public VentanaInterna(BufferedImage img) {
+        initComponents();
+        this.setSize(300,300); // tamaño de inicializacion
+        this.setBackground(Color.red); // no le hace caso
+        this.getLienzo().setImagen(img);
     }
 
     /**
@@ -98,9 +106,7 @@ public class VentanaInterna extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void lienzoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzoMouseMoved
-        // TODO add your handling code here:
-        //Point posicion = evt.getPoint();
-        //ventanaPrincipal.actualizarPosicionRatonEnLabel((int)posicion.getX(), (int)posicion.getY());
+        
     }//GEN-LAST:event_lienzoMouseMoved
 
     /**
