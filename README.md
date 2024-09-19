@@ -2,6 +2,10 @@
 **Paint en Java con Netbeans**
 - Torres Ramos, Juan Luis
 
+![Paint Básico](Imagenes/paintBasico.png)
+
+
+
 ## Contenidos Realizado
 ### P1 - Fundamentos Java
 ### P2 - Interfaces de Usuario en Java (Swing)
@@ -16,7 +20,7 @@
 ### P11 - Procesamiento de Imágenes: BandCombineOp y ColorConvertOp
 ### P12 - Procesamiento de Imágenes: Sepia, Ecualización, Tintado, etc.
 ### P13 - Sonido
-### P14 - Video (no funciona por problema de compatibilidad de librería) + Webcam
+### P14 - Video + Webcam
 ### Trabajo voluntario de sonido 
 
 
@@ -52,7 +56,8 @@
   - Listener para lienzo, para agregar figura, mostrar coordenada y color RGB
   - Listener para audio, contador de tiempo
   - Código documentado con Javadoc
-  - Copia dura del lienzo, se puede copiar tanto imagen como figuras del lienzo en una nueva 
+  - Copia dura del lienzo, se puede copiar tanto imagen como figuras del lienzo en una nueva
+  - Trabajo Voluntario de Sonido 
 
 ## Problemas 
 
@@ -62,6 +67,10 @@
   - SLF4J: Ver [SLF4J StaticLoggerBinder](http://www.slf4j.org/codes.html#StaticLoggerBinder) para más detalles.
   - VCL no encontrado.
 
-## Nota
+## Librerias
+Hay que enlazar primero las librerias con el proyecto, use como referencia los pdf del RoadMap, aqui hay un ejemplo para que corra el programa
 
+![Paint Básico](Imagenes/librerias.png)
+
+## Nota
 Si es la primera vez que descarga el proyecto, verifique que todas las librerías de la carpeta de biblioteca están asociadas al proyecto.
